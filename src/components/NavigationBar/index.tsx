@@ -1,8 +1,9 @@
 import { Grid, Typography, Link, IconButton } from "@mui/material";
 import React from "react";
 import ClothBrew from "../../assets/images/Logo.png";
-import Heart from "../../assets/icons/Heart.png";
-import Search from "../../assets/icons/Search.png";
+import { ReactComponent as Heart } from "../../assets/icons/Heart.svg";
+import { ReactComponent as Search } from "../../assets/icons/Search.svg";
+import { ReactComponent as Cart } from "../../assets/icons/Cart.svg";
 
 const styles = {
   links: {
@@ -11,6 +12,7 @@ const styles = {
     fontSize: "14px",
     fontFamiy: "'Mulish', sans-serif",
     cursor: "pointer",
+    fontWeight: 500,
   },
 };
 
@@ -28,7 +30,14 @@ const NavigationBar = () => {
         </Grid>
         <Grid item>
           <Typography
-            sx={{ fontSize: "16px", fontWeight: 500, color: "#FFFFFF", marginLeft: "10px", letterSpacing: "0.1em" }}
+            sx={{
+              fontSize: "16px",
+              fontWeight: 600,
+              color: "#FFFFFF",
+              marginLeft: "10px",
+              letterSpacing: "0.1em",
+              fontFamiy: "'Mulish', sans-serif",
+            }}
           >
             CLOTHBREW
           </Typography>
@@ -44,14 +53,21 @@ const NavigationBar = () => {
         <Grid item sx={{ marginLeft: "40px" }}>
           <Link sx={styles.links}>
             <IconButton>
-              <img style={{ width: "20px" }} src={Heart} alt="Heart" />
+              <Heart style={{ fill: "#FFFFFF" }} />
             </IconButton>
           </Link>
         </Grid>
         <Grid item sx={{ marginLeft: "40px" }}>
           <Link sx={styles.links}>
             <IconButton>
-              <img style={{ width: "16px" }} src={Search} alt="Search" />
+              <Search style={{ fill: "#FFFFFF" }} />
+            </IconButton>
+          </Link>
+        </Grid>
+        <Grid item sx={{ marginLeft: "40px" }}>
+          <Link sx={styles.links}>
+            <IconButton>
+              <Cart style={{ fill: "#FFFFFF" }} />
             </IconButton>
           </Link>
         </Grid>
