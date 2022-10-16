@@ -11,21 +11,29 @@ import PostFour from "./assets/images/post4.png";
 import PostFive from "./assets/images/post5.png";
 
 function App() {
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery("(min-width:600px)");
   return (
-    <div>
+    <div
+      style={{
+        overflowX: "hidden",
+      }}
+    >
       <div
         style={{
           backgroundImage: `url(${BackgroundHero})`,
           height: "100vh",
-          padding: "0 120px",
+          padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
           backgroundSize: "cover",
         }}
       >
         <NavigationBar />
-        <Grid container direction="column" sx={{ marginTop: "155px" }}>
+        <Grid
+          container
+          direction="column"
+          sx={{ marginTop: `${matches ? "155px" : "70px"}` }}
+        >
           <Grid item>
             <Typography
               sx={{
@@ -33,12 +41,17 @@ function App() {
                 fontWeight: 700,
                 color: "#FFFFFF",
                 fontFamily: "'Raleway', sans-serif",
+                lineHeight: `${matches ? "" : "100%"}`,
               }}
             >
-              Your Outfit Express
+              Your {!matches && <br />}Outfit {!matches && <br />}Express
               <br />
               <span
-                style={{ fontWeight: 200, fontFamily: "'Raleway', sans-serif" }}
+                style={{
+                  fontSize: `${matches ? "56px" : "40px"}`,
+                  fontWeight: 200,
+                  fontFamily: "'Raleway', sans-serif",
+                }}
               >
                 Who You Are
               </span>
@@ -90,8 +103,8 @@ function App() {
       <div
         style={{
           backgroundImage: `url(${BackgroundBottomHero})`,
-          height: "310px",
-          padding: "0 120px",
+          height: `${matches ? "310px" : "215px"}`,
+          padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
           backgroundSize: "cover",
@@ -104,21 +117,27 @@ function App() {
           sx={{
             fontFamily: "'Raleway', sans-serif",
             color: "#FFFFFF",
-            fontSize: "30px",
+            fontSize: `${matches ? "30px" : "20px"}`,
             fontWeight: 500,
             textAlign: "center",
           }}
         >
-          “True change cannot be made if it is bound by laws, limitations, and
-          predictions.
-          <br /> Coffee is one of those tools that can break em.”
+          “True change cannot be made {!matches && <br />}if it is bound by
+          laws, {!matches && <br />}limitations, and predictions.
+          <br /> Coffee is one of those tools {!matches && <br />}that can break
+          em.”
         </Typography>
       </div>
-      <div style={{ marginBottom: "50px" }}>
+      <div
+        style={{
+          marginBottom: "50px",
+          padding: `${matches ? "0 120px" : "0 32px"}`,
+        }}
+      >
         <Grid
           container
           justifyContent="center"
-          alignItems="center"
+          alignItems={matches ? "center" : "flex-start"}
           direction="column"
           sx={{ marginTop: "60px" }}
         >
@@ -128,9 +147,10 @@ function App() {
                 fontFamily: "'Raleway', sans-serif",
                 fontWeight: 600,
                 fontSize: "48px",
+                lineHeight: `${matches ? "" : "100%"}`,
               }}
             >
-              Check Out Our Instagram
+              Check {!matches && <br />}Out Our Instagram
             </Typography>
           </Grid>
           <Grid item sx={{ marginTop: "20px" }}>
@@ -138,38 +158,56 @@ function App() {
               sx={{
                 fontFamily: "'Raleway', sans-serif",
                 fontWeight: 400,
-                textAlign: "center",
+                textAlign: `${matches ? "center" : "start"}`,
               }}
             >
-              Check our instagram to get the latest info from our products and
-              customers review. Get in touch with us to <br />
+              Check our instagram to get the latest {!matches && <br />}info
+              from our products and customers {!matches && <br />}review. Get in
+              touch with us to <br />
               get interesting pieces every day
             </Typography>
           </Grid>
-          <Grid
-            item
-            container
-            alignItems="center"
-            justifyContent="center"
-            sx={{ marginTop: "60px" }}
-          >
-            <Grid item>
-              <img src={PostOne} alt="PostOne" />
+          {matches ? (
+            <Grid
+              item
+              container
+              alignItems="center"
+              justifyContent="center"
+              sx={{ marginTop: "60px" }}
+            >
+              <Grid item>
+                <img src={PostOne} alt="PostOne" />
+              </Grid>
+              <Grid item>
+                <img src={PostTwo} alt="PostTwo" />
+              </Grid>
+              <Grid item>
+                <img src={PostThree} alt="PostThree" />
+              </Grid>
+              <Grid item>
+                <img src={PostFour} alt="PostFour" />
+              </Grid>
+              <Grid item>
+                <img src={PostFive} alt="PostFive" />
+              </Grid>
             </Grid>
-            <Grid item>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "55px",
+              }}
+            >
+              <div>
+                <img src={PostOne} alt="PostOne" />
+              </div>
+
               <img src={PostTwo} alt="PostTwo" />
-            </Grid>
-            <Grid item>
-              <img src={PostThree} alt="PostThree" />
-            </Grid>
-            <Grid item>
-              <img src={PostFour} alt="PostFour" />
-            </Grid>
-            <Grid item>
-              <img src={PostFive} alt="PostFive" />
-            </Grid>
-          </Grid>
-          <Grid item sx={{ marginTop: "60px" }}>
+            </div>
+          )}
+          <Grid item container justifyContent="center" sx={{ marginTop: "60px" }}>
             <Button
               sx={{
                 textTransform: "none",
@@ -188,7 +226,7 @@ function App() {
                 },
               }}
             >
-              View our Instagram 
+              View our Instagram
             </Button>
           </Grid>
         </Grid>
