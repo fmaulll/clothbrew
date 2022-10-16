@@ -4,6 +4,11 @@ import NavigationBar from "./components/NavigationBar";
 import BackgroundHero from "./assets/images/Background-Hero.png";
 import BackgroundBottomHero from "./assets/images/Hero-Bottom.png";
 import { ReactComponent as ArrowRight } from "./assets/icons/ArrowSmall.svg";
+import PostOne from "./assets/images/post1.png";
+import PostTwo from "./assets/images/post2.png";
+import PostThree from "./assets/images/post3.png";
+import PostFour from "./assets/images/post4.png";
+import PostFive from "./assets/images/post5.png";
 
 function App() {
   return (
@@ -107,6 +112,85 @@ function App() {
           predictions.
           <br /> Coffee is one of those tools that can break em.”
         </Typography>
+      </div>
+      <div>
+        <Grid
+          container
+          justifyContent="center"
+          alignItems="center"
+          direction="column"
+          sx={{ marginTop: "60px" }}
+        >
+          <Grid item>
+            <Typography
+              sx={{
+                fontFamily: "'Raleway', sans-serif",
+                fontWeight: 600,
+                fontSize: "48px",
+              }}
+            >
+              Check Out Our Instagram
+            </Typography>
+          </Grid>
+          <Grid item sx={{ marginTop: "20px" }}>
+            <Typography
+              sx={{
+                fontFamily: "'Raleway', sans-serif",
+                fontWeight: 400,
+                textAlign: "center",
+              }}
+            >
+              Check our instagram to get the latest info from our products and
+              customers review. Get in touch with us to <br />
+              get interesting pieces every day
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            container
+            alignItems="center"
+            justifyContent="center"
+            sx={{ marginTop: "60px" }}
+          >
+            <Grid item>
+              <img src={PostOne} alt="PostOne" />
+            </Grid>
+            <Grid item>
+              <img src={PostTwo} alt="PostTwo" />
+            </Grid>
+            <Grid item>
+              <img src={PostThree} alt="PostThree" />
+            </Grid>
+            <Grid item>
+              <img src={PostFour} alt="PostFour" />
+            </Grid>
+            <Grid item>
+              <img src={PostFive} alt="PostFive" />
+            </Grid>
+          </Grid>
+          <Grid item sx={{ marginTop: "60px" }}>
+            <Button
+              sx={{
+                textTransform: "none",
+                borderRadius: "60px",
+                border: "1px solid #000000",
+                color: "#000000",
+                background: "#FFFFFF",
+                padding: "16px 36px",
+                fontFamily: "'Raleway', sans-serif",
+                fontWeight: 600,
+                "&:active": {
+                  background: "#bbcede",
+                },
+                "&:hover": {
+                  background: "#bbcede",
+                },
+              }}
+            >
+              Connect With Us
+            </Button>
+          </Grid>
+        </Grid>
       </div>
     </div>
   );
