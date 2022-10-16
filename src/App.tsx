@@ -89,8 +89,25 @@ function App() {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
           backgroundSize: "cover",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
         }}
-      ></div>
+      >
+        <Typography
+          sx={{
+            fontFamily: "'Raleway', sans-serif",
+            color: "#FFFFFF",
+            fontSize: "30px",
+            fontWeight: 500,
+            textAlign: "center",
+          }}
+        >
+          “True change cannot be made if it is bound by laws, limitations, and
+          predictions.
+          <br /> Coffee is one of those tools that can break em.”
+        </Typography>
+      </div>
     </div>
   );
 }
