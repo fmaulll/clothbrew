@@ -21,7 +21,7 @@ function App() {
       <div
         style={{
           backgroundImage: `url(${BackgroundHero})`,
-          height: "100vh",
+          height: `${matches ? "100vh" : "calc(100vh - 210px)"}`,
           padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
@@ -32,7 +32,7 @@ function App() {
         <Grid
           container
           direction="column"
-          sx={{ marginTop: `${matches ? "155px" : "70px"}` }}
+          sx={{ marginTop: `${matches ? "155px" : "50px"}` }}
         >
           <Grid item>
             <Typography
@@ -72,12 +72,12 @@ function App() {
                 style={{
                   fill: "#FFFFFF",
                   marginLeft: "5px",
-                  marginTop: "10px",
+                  marginTop: `${matches ? "10px" : "20px"}`,
                 }}
               />
             </Typography>
           </Grid>
-          <Grid item sx={{ marginTop: "60px" }}>
+          <Grid item sx={{ marginTop: `${matches ? "60px" : "20px"}` }}>
             <Button
               sx={{
                 textTransform: "none",
@@ -207,7 +207,12 @@ function App() {
               <img src={PostTwo} alt="PostTwo" />
             </div>
           )}
-          <Grid item container justifyContent="center" sx={{ marginTop: "60px" }}>
+          <Grid
+            item
+            container
+            justifyContent="center"
+            sx={{ marginTop: "60px" }}
+          >
             <Button
               sx={{
                 textTransform: "none",
