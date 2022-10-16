@@ -1,9 +1,16 @@
-import { Grid, Typography, Link, IconButton } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Link,
+  IconButton,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 import ClothBrew from "../../assets/images/Logo.png";
 import { ReactComponent as Heart } from "../../assets/icons/Heart.svg";
 import { ReactComponent as Search } from "../../assets/icons/Search.svg";
 import { ReactComponent as Cart } from "../../assets/icons/Cart.svg";
+import { ReactComponent as Burger } from "../../assets/icons/Burger.svg";
 
 const styles = {
   links: {
@@ -17,6 +24,7 @@ const styles = {
 };
 
 const NavigationBar = () => {
+  const matches = useMediaQuery("(min-width:600px)");
   return (
     <Grid
       container
@@ -24,7 +32,7 @@ const NavigationBar = () => {
       alignItems="center"
       sx={{ paddingTop: "25px" }}
     >
-      <Grid item container alignItems="center">
+      <Grid xs item container alignItems="center">
         <Grid item>
           <img src={ClothBrew} alt="ClothBrew Logo" />
         </Grid>
@@ -43,35 +51,41 @@ const NavigationBar = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid item container justifyContent="flex-end" alignItems="center">
+      {matches ? (
+        <Grid xs item container justifyContent="flex-end" alignItems="center">
+          <Grid item>
+            <Link sx={styles.links}>Catalogue</Link>
+          </Grid>
+          <Grid item sx={{ marginLeft: "40px" }}>
+            <Link sx={styles.links}>Find us</Link>
+          </Grid>
+          <Grid item sx={{ marginLeft: "40px" }}>
+            <Link sx={styles.links}>
+              <IconButton>
+                <Heart style={{ fill: "#FFFFFF" }} />
+              </IconButton>
+            </Link>
+          </Grid>
+          <Grid item sx={{ marginLeft: "40px" }}>
+            <Link sx={styles.links}>
+              <IconButton>
+                <Search style={{ fill: "#FFFFFF" }} />
+              </IconButton>
+            </Link>
+          </Grid>
+          <Grid item sx={{ marginLeft: "40px" }}>
+            <Link sx={styles.links}>
+              <IconButton>
+                <Cart style={{ fill: "#FFFFFF" }} />
+              </IconButton>
+            </Link>
+          </Grid>
+        </Grid>
+      ) : (
         <Grid item>
-          <Link sx={styles.links}>Catalogue</Link>
+          <Burger />
         </Grid>
-        <Grid item sx={{ marginLeft: "40px" }}>
-          <Link sx={styles.links}>Find us</Link>
-        </Grid>
-        <Grid item sx={{ marginLeft: "40px" }}>
-          <Link sx={styles.links}>
-            <IconButton>
-              <Heart style={{ fill: "#FFFFFF" }} />
-            </IconButton>
-          </Link>
-        </Grid>
-        <Grid item sx={{ marginLeft: "40px" }}>
-          <Link sx={styles.links}>
-            <IconButton>
-              <Search style={{ fill: "#FFFFFF" }} />
-            </IconButton>
-          </Link>
-        </Grid>
-        <Grid item sx={{ marginLeft: "40px" }}>
-          <Link sx={styles.links}>
-            <IconButton>
-              <Cart style={{ fill: "#FFFFFF" }} />
-            </IconButton>
-          </Link>
-        </Grid>
-      </Grid>
+      )}
     </Grid>
   );
 };
