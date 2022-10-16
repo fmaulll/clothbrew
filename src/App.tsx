@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography, Button, useMediaQuery } from "@mui/material";
 import NavigationBar from "./components/NavigationBar";
 import BackgroundHero from "./assets/images/Background-Hero.png";
 import BackgroundBottomHero from "./assets/images/Hero-Bottom.png";
@@ -11,6 +11,7 @@ import PostFour from "./assets/images/post4.png";
 import PostFive from "./assets/images/post5.png";
 
 function App() {
+  const matches = useMediaQuery('(min-width:600px)');
   return (
     <div>
       <div
@@ -113,7 +114,7 @@ function App() {
           <br /> Coffee is one of those tools that can break em.”
         </Typography>
       </div>
-      <div>
+      <div style={{ marginBottom: "50px" }}>
         <Grid
           container
           justifyContent="center"
@@ -187,7 +188,7 @@ function App() {
                 },
               }}
             >
-              Connect With Us
+              View our Instagram 
             </Button>
           </Grid>
         </Grid>

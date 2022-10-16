@@ -24,7 +24,7 @@ const NavigationBar = () => {
       alignItems="center"
       sx={{ paddingTop: "25px" }}
     >
-      <Grid xs item container alignItems="center">
+      <Grid item container alignItems="center">
         <Grid item>
           <img src={ClothBrew} alt="ClothBrew Logo" />
         </Grid>
@@ -43,7 +43,7 @@ const NavigationBar = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid xs item container justifyContent="flex-end" alignItems="center">
+      <Grid item container justifyContent="flex-end" alignItems="center">
         <Grid item>
           <Link sx={styles.links}>Catalogue</Link>
         </Grid>
