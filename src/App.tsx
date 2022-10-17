@@ -6,6 +6,8 @@ import {
   useMediaQuery,
   Link,
   Box,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import NavigationBar from "./components/NavigationBar";
 import BackgroundHero from "./assets/images/Background-Hero.png";
@@ -21,20 +23,36 @@ import { ReactComponent as ChevronUp } from "./assets/icons/ChevronUp.svg";
 import { catalog } from "./data/catalog";
 import Shopee from "./assets/images/Shopee.png";
 import Tokopedia from "./assets/images/Tokopedia.png";
-import Instagram from "./assets/images/Instagram.png";
+// import Instagram from "./assets/images/Instagram.png";
 import { ReactComponent as Whatsapp } from "./assets/icons/Whatsapp.svg";
 import { ReactComponent as Mail } from "./assets/icons/Mail.svg";
-import LogoDark from "./assets/images/LogoDark.png";
+import LogoDark from "./assets/images/Logo-Dark.png";
+import { ReactComponent as Instagram } from "./assets/icons/Instagram.svg";
+import { ReactComponent as Facebook } from "./assets/icons/Facebook.svg";
+import { ReactComponent as Twitter } from "./assets/icons/Twitter.svg";
+import ClothBrew from "./assets/images/Logo.png";
 
 function App() {
-  const [selectedFilter, setSelectedFilter] = useState<string>("All");
+  const [selectedFilter, setSelectedFilter] = useState<string>("");
   const [filterPrice, setFilterPrice] = useState<boolean>(false);
   const [filterCategory, setFilterCategory] = useState<boolean>(false);
   const matches = useMediaQuery("(min-width:600px)");
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClickCategory = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setFilterCategory(!filterCategory);
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseCategory = () => {
+    setFilterCategory(!filterCategory);
+    setAnchorEl(null);
+  };
   return (
     <div
       style={{
         overflowX: "hidden",
+        scrollBehavior: "smooth",
       }}
     >
       <div
@@ -45,6 +63,7 @@ function App() {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
           backgroundSize: "cover",
+          scrollBehavior: "smooth",
         }}
       >
         <NavigationBar />
@@ -97,25 +116,27 @@ function App() {
             </Typography>
           </Grid>
           <Grid item sx={{ marginTop: `${matches ? "60px" : "20px"}` }}>
-            <Button
-              sx={{
-                textTransform: "none",
-                borderRadius: "60px",
-                background: "#25313C",
-                color: "#FFFFFF",
-                padding: "16px 36px",
-                fontFamily: "'Raleway', sans-serif",
-                fontWeight: 600,
-                "&:active": {
-                  background: "#3c4c5b",
-                },
-                "&:hover": {
-                  background: "#1d2730",
-                },
-              }}
-            >
-              Connect With Us
-            </Button>
+            <Link href="#contact" sx={{ textDecoration: "none" }}>
+              <Button
+                sx={{
+                  textTransform: "none",
+                  borderRadius: "60px",
+                  background: "#25313C",
+                  color: "#FFFFFF",
+                  padding: "16px 36px",
+                  fontFamily: "'Raleway', sans-serif",
+                  fontWeight: 600,
+                  "&:active": {
+                    background: "#3c4c5b",
+                  },
+                  "&:hover": {
+                    background: "#1d2730",
+                  },
+                }}
+              >
+                Connect With Us
+              </Button>
+            </Link>
           </Grid>
         </Grid>
       </div>
@@ -256,6 +277,7 @@ function App() {
         </Grid>
       </div>
       <div
+        id="catalogue"
         style={{
           marginTop: "50px",
           padding: `${matches ? "0 120px" : "0 32px"}`,
@@ -286,11 +308,11 @@ function App() {
                     <Typography
                       sx={{
                         fontSize: "20px",
-                        fontWeight: selectedFilter === "All" ? 700 : 400,
+                        fontWeight: selectedFilter === "" ? 700 : 400,
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                       }}
-                      onClick={() => setSelectedFilter("All")}
+                      onClick={() => setSelectedFilter("")}
                     >
                       All
                     </Typography>
@@ -299,12 +321,12 @@ function App() {
                     <Typography
                       sx={{
                         fontSize: "20px",
-                        fontWeight: selectedFilter === "Coffee" ? 700 : 400,
+                        fontWeight: selectedFilter === "coffee" ? 700 : 400,
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
                       }}
-                      onClick={() => setSelectedFilter("Coffee")}
+                      onClick={() => setSelectedFilter("coffee")}
                     >
                       Coffee
                     </Typography>
@@ -313,12 +335,12 @@ function App() {
                     <Typography
                       sx={{
                         fontSize: "20px",
-                        fontWeight: selectedFilter === "Shirts" ? 700 : 400,
+                        fontWeight: selectedFilter === "shirt" ? 700 : 400,
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
                       }}
-                      onClick={() => setSelectedFilter("Shirts")}
+                      onClick={() => setSelectedFilter("shirt")}
                     >
                       Shirts
                     </Typography>
@@ -327,12 +349,12 @@ function App() {
                     <Typography
                       sx={{
                         fontSize: "20px",
-                        fontWeight: selectedFilter === "Machine" ? 700 : 400,
+                        fontWeight: selectedFilter === "machine" ? 700 : 400,
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
                       }}
-                      onClick={() => setSelectedFilter("Machine")}
+                      onClick={() => setSelectedFilter("machine")}
                     >
                       Machine
                     </Typography>
@@ -350,11 +372,56 @@ function App() {
                     display: "flex",
                     alignItems: "center",
                   }}
-                  onClick={() => setFilterCategory(!filterCategory)}
+                  onClick={handleClickCategory}
                 >
-                  All
+                  {selectedFilter === "" && "All"}
+                  {selectedFilter === "coffee" && "Coffee"}
+                  {selectedFilter === "shirt" && "Shirts"}
+                  {selectedFilter === "machine" && "Machine"}
                   {filterCategory ? <ChevronUp /> : <ChevronDown />}
                 </Typography>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleCloseCategory}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      setSelectedFilter("");
+                      handleCloseCategory();
+                    }}
+                  >
+                    All
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSelectedFilter("coffee");
+                      handleCloseCategory();
+                    }}
+                  >
+                    Coffee
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSelectedFilter("shirt");
+                      handleCloseCategory();
+                    }}
+                  >
+                    Shirts
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      setSelectedFilter("machine");
+                      handleCloseCategory();
+                    }}
+                  >
+                    Machine
+                  </MenuItem>
+                </Menu>
               </Grid>
             )}
 
@@ -390,49 +457,56 @@ function App() {
             <Grid
               item
               container
-              justifyContent={matches ? "space-between" : "center"}
+              justifyContent={matches ? "flex-start" : "center"}
               spacing={4}
               sx={{ marginTop: "40px" }}
             >
-              {catalog.map((item) => (
-                <Grid item xs={matches ? 4 : 6} sx={{ marginBottom: "10px" }}>
-                  <Grid
-                    container
-                    direction="column"
-                    // sx={{ border: "1px solid red" }}
-                  >
-                    <Grid item sx={{ marginBottom: matches ? "55px" : "8px" }}>
-                      <img
-                        style={{ width: matches ? "100%" : "100%" }}
-                        src={require(`${item.src}`)}
-                        alt={item.name}
-                      />
-                    </Grid>
-                    <Grid xs={12} item sx={{}}>
-                      <Typography
-                        sx={{
-                          fontFamily: "'Raleway', sans-serif",
-                          fontWeight: 600,
-                          fontSize: matches ? "16px" : "13px",
-                        }}
+              {catalog
+                .filter((item) =>
+                  item.category.toLowerCase().includes(selectedFilter)
+                )
+                .map((item) => (
+                  <Grid item xs={matches ? 4 : 6} sx={{ marginBottom: "10px" }}>
+                    <Grid
+                      container
+                      direction="column"
+                      // sx={{ border: "1px solid red" }}
+                    >
+                      <Grid
+                        item
+                        sx={{ marginBottom: matches ? "55px" : "8px" }}
                       >
-                        {item.name}
-                      </Typography>
-                    </Grid>
-                    <Grid xs={12} item>
-                      <Typography
-                        sx={{
-                          fontFamily: "'Raleway', sans-serif",
-                          fontWeight: 400,
-                          fontSize: matches ? "16px" : "13px",
-                        }}
-                      >
-                        {item.price}
-                      </Typography>
+                        <img
+                          style={{ width: matches ? "100%" : "100%" }}
+                          src={require(`${item.src}`)}
+                          alt={item.name}
+                        />
+                      </Grid>
+                      <Grid xs={12} item sx={{}}>
+                        <Typography
+                          sx={{
+                            fontFamily: "'Raleway', sans-serif",
+                            fontWeight: 600,
+                            fontSize: matches ? "16px" : "13px",
+                          }}
+                        >
+                          {item.name}
+                        </Typography>
+                      </Grid>
+                      <Grid xs={12} item>
+                        <Typography
+                          sx={{
+                            fontFamily: "'Raleway', sans-serif",
+                            fontWeight: 400,
+                            fontSize: matches ? "16px" : "13px",
+                          }}
+                        >
+                          {item.price}
+                        </Typography>
+                      </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
-              ))}
+                ))}
             </Grid>
           </Grid>
         </Grid>
@@ -441,6 +515,7 @@ function App() {
         style={{
           margin: "60px 0",
           padding: `${matches ? "0 120px" : "0 32px"}`,
+          scrollBehavior: "smooth",
         }}
       >
         <Grid
@@ -528,7 +603,9 @@ function App() {
             </Grid>
           )}
           {!matches && (
-            <Grid item sx={{ marginTop: "40px" }}>  {/* Shopee Button Mobile */}
+            <Grid item sx={{ marginTop: "40px" }}>
+              {" "}
+              {/* Shopee Button Mobile */}
               <Link href="https://shopee.co.id/" target="_blank">
                 <Button
                   sx={{
@@ -555,7 +632,9 @@ function App() {
             </Grid>
           )}
           {!matches && (
-            <Grid item sx={{ marginTop: "20px" }}>  {/* Tokopedia Button Mobile */}
+            <Grid item sx={{ marginTop: "20px" }}>
+              {" "}
+              {/* Tokopedia Button Mobile */}
               <Link href="https://tokopedia.com/" target="_blank">
                 <Button
                   sx={{
@@ -581,7 +660,9 @@ function App() {
               </Link>
             </Grid>
           )}
-          <Grid item sx={{ marginTop: "20px" }}>   {/* Instagram Button */}
+          <Grid item sx={{ marginTop: "20px" }}>
+            {" "}
+            {/* Instagram Button */}
             <Link
               href="https://shopee.co.id/"
               target="_blank"
@@ -611,7 +692,7 @@ function App() {
                   },
                 }}
               >
-                <img src={Instagram} alt="Instagram" />{" "}
+                <Instagram />{" "}
                 <Typography
                   sx={{
                     textDecoration: "none",
@@ -631,9 +712,11 @@ function App() {
       </div>
 
       <div
+        id="contact"
         style={{
-          margin: "60px 0",
+          margin: matches ? "60px 0" : "60px 0 10px 0",
           padding: `${matches ? "0 120px" : "0 32px"}`,
+          scrollBehavior: "smooth",
         }}
       >
         <Grid
@@ -648,24 +731,23 @@ function App() {
                 fontSize: "48px",
                 fontWeight: 800,
                 fontFamily: "'Raleway', sans-serif",
-                textAlign: "center",
+                textAlign: matches ? "center" : "start",
                 lineHeight: `${matches ? "" : "100%"}`,
               }}
             >
               You have any questions?
             </Typography>
-          </Grid>
-          <Grid item>
             <Typography
               sx={{
                 fontSize: "18px",
                 fontWeight: 600,
                 fontFamily: "'Raleway', sans-serif",
-                textAlign: "center",
-                lineHeight: `${matches ? "" : "100%"}`,
+                textAlign: "start",
+                lineHeight: `${matches ? "" : "163%"}`,
+                marginTop: "20px",
               }}
             >
-              Please don’t be hesitate to contact us
+              Please don’t be hesitate to {!matches && <br />}contact us
             </Typography>
           </Grid>
           {matches && (
@@ -677,7 +759,7 @@ function App() {
                   alignItems: "center",
                 }}
               >
-                 {/* Phone Button 1 Desktop */}
+                {/* Phone Button 1 Desktop */}
                 <Link
                   href="https://shopee.co.id/"
                   target="_blank"
@@ -717,12 +799,12 @@ function App() {
                         marginLeft: "12px",
                       }}
                     >
-                      08122736473
+                      0812-xxxx-xxxx
                     </Typography>
                   </Button>
                 </Link>
-                 {/* Phone Button 2 Desktop */}
-                <Link 
+                {/* Phone Button 2 Desktop */}
+                <Link
                   href="https://shopee.co.id/"
                   target="_blank"
                   sx={{
@@ -762,7 +844,7 @@ function App() {
                         marginLeft: "12px",
                       }}
                     >
-                      08122736473
+                      0812-xxxx-xxxx
                     </Typography>
                   </Button>
                 </Link>
@@ -770,7 +852,9 @@ function App() {
             </Grid>
           )}
           {!matches && (
-            <Grid item sx={{ marginTop: "40px" }}> {/* Phone Button 1 Mobile */}
+            <Grid item sx={{ marginTop: "40px" }}>
+              {" "}
+              {/* Phone Button 1 Mobile */}
               <Link
                 href="https://shopee.co.id/"
                 target="_blank"
@@ -810,14 +894,16 @@ function App() {
                       marginLeft: "12px",
                     }}
                   >
-                    08122736473
+                    0812-xxxx-xxxx
                   </Typography>
                 </Button>
               </Link>
             </Grid>
           )}
           {!matches && (
-            <Grid item sx={{ marginTop: "20px" }}> {/* Phone Button 2 Mobile */}
+            <Grid item sx={{ marginTop: "20px" }}>
+              {" "}
+              {/* Phone Button 2 Mobile */}
               <Link
                 href="https://shopee.co.id/"
                 target="_blank"
@@ -857,13 +943,15 @@ function App() {
                       marginLeft: "12px",
                     }}
                   >
-                    08122736473
+                    0812-xxxx-xxxx
                   </Typography>
                 </Button>
               </Link>
             </Grid>
           )}
-          <Grid item sx={{ marginTop: "20px" }}> {/* Email Button */}
+          <Grid item sx={{ marginTop: "20px" }}>
+            {" "}
+            {/* Email Button */}
             <Link
               href="https://shopee.co.id/"
               target="_blank"
@@ -910,13 +998,296 @@ function App() {
           </Grid>
         </Grid>
       </div>
-      <div>
-        <Grid container>
-          <Grid item>
+      {matches && (
+        <div
+          style={{
+            padding: `${matches ? "0 120px" : "0 32px"}`,
+            paddingTop: "56px",
+            paddingBottom: "88px",
+            backgroundColor: "#DAE3EA",
+          }}
+        >
+          <Grid container>
+            <Grid item xs={6}>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <img src={LogoDark} alt="Logo" style={{ width: "30px" }} />
 
+                <Typography
+                  sx={{
+                    fontSize: "16px",
+                    fontWeight: 600,
+                    color: "#000000",
+                    marginLeft: "10px",
+                    letterSpacing: "0.1em",
+                    fontFamiy: "'Mulish', sans-serif",
+                  }}
+                >
+                  CLOTHBREW
+                </Typography>
+              </div>
+
+              <Typography
+                sx={{
+                  fontSize: "12px",
+                  color: "#000000",
+                  fontFamily: "'Mulish', sans-serif",
+                  marginTop: "12px",
+                }}
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                <br />
+                eiusmod ut labore et dolore magna aliqua.{" "}
+              </Typography>
+              <Link
+                sx={{
+                  textDecoration: "none",
+                  color: "#000000",
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  fontFamily: "'Mulish', sans-serif",
+                  marginTop: "20px",
+                }}
+              >
+                <Instagram style={{ marginRight: "8px", width: "20px" }} />{" "}
+                @clothbrew
+              </Link>
+            </Grid>
+            <Grid item xs={2}>
+              <Typography
+                sx={{
+                  textDecoration: "none",
+                  color: "#000000",
+                  display: "flex",
+                  fontWeight: "600",
+                  alignItems: "center",
+                  fontFamily: "'Mulish', sans-serif",
+                }}
+              >
+                Category
+              </Typography>
+              <Grid
+                container
+                direction="column"
+                style={{
+                  marginTop: "20px",
+                }}
+              >
+                <Grid item sx={{ marginBottom: "8px" }}>
+                  <Link
+                    sx={{
+                      textDecoration: "none",
+                      color: "#000000",
+                      cursor: "pointer",
+                      fontFamily: "'Mulish', sans-serif",
+                    }}
+                  >
+                    Best Seller
+                  </Link>
+                </Grid>
+                <Grid item sx={{ marginBottom: "8px" }}>
+                  <Link
+                    sx={{
+                      textDecoration: "none",
+                      color: "#000000",
+                      cursor: "pointer",
+                      fontFamily: "'Mulish', sans-serif",
+                      marginTop: "8px",
+                    }}
+                  >
+                    Shirts
+                  </Link>
+                </Grid>
+                <Grid item sx={{ marginBottom: "8px" }}>
+                  <Link
+                    sx={{
+                      textDecoration: "none",
+                      color: "#000000",
+                      cursor: "pointer",
+                      fontFamily: "'Mulish', sans-serif",
+                      marginTop: "8px",
+                    }}
+                  >
+                    Machine
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link
+                    sx={{
+                      textDecoration: "none",
+                      color: "#000000",
+                      cursor: "pointer",
+                      fontFamily: "'Mulish', sans-serif",
+                      marginTop: "8px",
+                    }}
+                  >
+                    Beans
+                  </Link>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={4}>
+              <Typography
+                sx={{
+                  textDecoration: "none",
+                  color: "#000000",
+                  display: "flex",
+                  fontWeight: "600",
+                  alignItems: "center",
+                  fontFamily: "'Mulish', sans-serif",
+                }}
+              >
+                Information
+              </Typography>
+              <Grid
+                container
+                direction="column"
+                style={{
+                  marginTop: "20px",
+                }}
+              >
+                <Grid item sx={{ marginBottom: "8px" }}>
+                  <Link
+                    sx={{
+                      textDecoration: "none",
+                      color: "#000000",
+                      cursor: "pointer",
+                      fontFamily: "'Mulish', sans-serif",
+                    }}
+                  >
+                    Contact
+                  </Link>
+                </Grid>
+                <Grid item sx={{ marginBottom: "8px" }}>
+                  <Link
+                    sx={{
+                      textDecoration: "none",
+                      color: "#000000",
+                      cursor: "pointer",
+                      fontFamily: "'Mulish', sans-serif",
+                      marginTop: "8px",
+                    }}
+                  >
+                    Why Us
+                  </Link>
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="flex-end"
+            sx={{
+              borderTop: "2px solid #FFFFFF",
+              paddingTop: "20px",
+              marginTop: "40px",
+            }}
+          >
+            <Grid item>
+              <Typography
+                sx={{
+                  textDecoration: "none",
+                  fontSize: "12px",
+                  fontWeight: 400,
+                  fontFamily: "'Mulish', sans-serif",
+                }}
+              >
+                0812-xxxx-xxxx
+              </Typography>
+            </Grid>
+            <Grid item sx={{ marginLeft: "20px" }}>
+              <Link>
+                <Facebook style={{ width: "20px", fill: "#6D7D8B" }} />
+              </Link>
+            </Grid>
+            <Grid item sx={{ marginLeft: "20px" }}>
+              <Link>
+                <Instagram style={{ width: "20px", fill: "#6D7D8B" }} />
+              </Link>
+            </Grid>
+            <Grid item sx={{ marginLeft: "20px" }}>
+              <Link>
+                <Twitter style={{ width: "20px", fill: "#6D7D8B" }} />
+              </Link>
+            </Grid>
+          </Grid>
+        </div>
+      )}
+      {!matches && (
+        <div
+          style={{
+            padding: `${matches ? "0 120px" : "0 32px"}`,
+            marginTop: "50px",
+            background: "#80452C",
+          }}
+        >
+          <Grid container justifyContent="center" sx={{ padding: "20px 0" }}>
+            <Grid item>
+              <Grid container alignItems="center">
+                <Grid item>
+                  <img src={ClothBrew} alt="ClothBrew Logo" />
+                </Grid>
+                <Grid item>
+                  <Typography
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      color: "#FFFFFF",
+                      marginLeft: "10px",
+                      letterSpacing: "0.1em",
+                      fontFamiy: "'Mulish', sans-serif",
+                    }}
+                  >
+                    CLOTHBREW
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={12} sx={{ marginTop: "24px" }}>
+              <Grid
+                container
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Grid item>
+                  <Typography
+                    sx={{
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      color: "#FFFFFF",
+                      marginLeft: "10px",
+                      letterSpacing: "0.1em",
+                      fontFamiy: "'Mulish', sans-serif",
+                    }}
+                  >
+                    Privacy Policy
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Grid container>
+                    <Grid item sx={{ marginLeft: "20px" }}>
+                      <Link>
+                        <Facebook style={{ width: "20px", fill: "#FFFFFF" }} />
+                      </Link>
+                    </Grid>
+                    <Grid item sx={{ marginLeft: "20px" }}>
+                      <Link>
+                        <Instagram style={{ width: "20px", fill: "#FFFFFF" }} />
+                      </Link>
+                    </Grid>
+                    <Grid item sx={{ marginLeft: "20px" }}>
+                      <Link>
+                        <Twitter style={{ width: "20px", fill: "#FFFFFF" }} />
+                      </Link>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </div>
+      )}
     </div>
   );
 }
