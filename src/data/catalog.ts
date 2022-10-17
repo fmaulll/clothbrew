@@ -14,7 +14,7 @@ export const catalog = [
     {
         name: "Expresso Machina",
         price: "Rp. 2.800.000",
-        category: "coffee",
+        category: "machine",
         src: "./assets/images/Image.png"
     },
     {

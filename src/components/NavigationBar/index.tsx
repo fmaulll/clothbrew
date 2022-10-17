@@ -32,58 +32,63 @@ const NavigationBar = () => {
       alignItems="center"
       sx={{ paddingTop: "25px" }}
     >
-      <Grid xs item container alignItems="center">
-        <Grid item>
-          <img src={ClothBrew} alt="ClothBrew Logo" />
-        </Grid>
-        <Grid item>
-          <Typography
-            sx={{
-              fontSize: "16px",
-              fontWeight: 600,
-              color: "#FFFFFF",
-              marginLeft: "10px",
-              letterSpacing: "0.1em",
-              fontFamiy: "'Mulish', sans-serif",
-            }}
-          >
-            CLOTHBREW
-          </Typography>
-        </Grid>
-      </Grid>
       {matches ? (
-        <Grid xs item container justifyContent="flex-end" alignItems="center">
-          <Grid item>
-            <Link sx={styles.links}>Catalogue</Link>
-          </Grid>
-          <Grid item sx={{ marginLeft: "40px" }}>
-            <Link sx={styles.links}>Find us</Link>
-          </Grid>
-          <Grid item sx={{ marginLeft: "40px" }}>
-            <Link sx={styles.links}>
-              <IconButton>
-                <Heart style={{ fill: "#FFFFFF" }} />
-              </IconButton>
-            </Link>
-          </Grid>
-          <Grid item sx={{ marginLeft: "40px" }}>
-            <Link sx={styles.links}>
-              <IconButton>
-                <Search style={{ fill: "#FFFFFF" }} />
-              </IconButton>
-            </Link>
-          </Grid>
-          <Grid item sx={{ marginLeft: "40px" }}>
-            <Link sx={styles.links}>
-              <IconButton>
-                <Cart style={{ fill: "#FFFFFF" }} />
-              </IconButton>
-            </Link>
+        <Grid item>
+          <Grid container alignItems="center">
+            <Grid item>
+              <img src={ClothBrew} alt="ClothBrew Logo" />
+            </Grid>
+            <Grid item>
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  color: "#FFFFFF",
+                  marginLeft: "10px",
+                  letterSpacing: "0.1em",
+                  fontFamiy: "'Mulish', sans-serif",
+                }}
+              >
+                CLOTHBREW
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       ) : (
         <Grid item>
           <Burger />
+        </Grid>
+      )}
+      {matches ? (
+        <Grid xs item container justifyContent="flex-end" alignItems="center">
+          <Grid item>
+            <Link href="#catalogue" sx={styles.links}>Catalogue</Link>
+          </Grid>
+          <Grid item sx={{ marginLeft: "40px" }}>
+            <Link sx={styles.links}>Find us</Link>
+          </Grid>
+        </Grid>
+      ) : (
+        <Grid item>
+          <Grid container alignItems="center">
+            <Grid item>
+              <img src={ClothBrew} alt="ClothBrew Logo" />
+            </Grid>
+            <Grid item>
+              <Typography
+                sx={{
+                  fontSize: "16px",
+                  fontWeight: 600,
+                  color: "#FFFFFF",
+                  marginLeft: "10px",
+                  letterSpacing: "0.1em",
+                  fontFamiy: "'Mulish', sans-serif",
+                }}
+              >
+                CLOTHBREW
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
       )}
     </Grid>
