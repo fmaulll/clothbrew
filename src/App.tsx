@@ -497,6 +497,7 @@ function App() {
                 .filter((item) =>
                   item.category.toLowerCase().includes(selectedFilter)
                 )
+                .sort((a, b) => (filterPrice ? (a.value > b.value) : (a.value < b.value)) ? 1 : -1)
                 .map((item) => (
                   <Grid item xs={matches ? 4 : 6} sx={{ marginBottom: "10px" }}>
                     <Grid
@@ -1000,7 +1001,7 @@ function App() {
                   textTransform: "none",
                   borderRadius: "60px",
                   color: "#000000",
-                  background: "#DEC19B",
+                  background: matches ? "#D9D9D9" : "#DEC19B",
                   width: "276px",
                   height: "71px",
                   fontFamily: "'Raleway', sans-serif",
@@ -1008,7 +1009,7 @@ function App() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.4)",
+                  boxShadow: matches ? "none" : "0px 6px 8px rgba(0, 0, 0, 0.4)",
                   "&:active": {
                     background: "#bbcede",
                   },
