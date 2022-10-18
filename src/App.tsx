@@ -207,76 +207,105 @@ function App() {
               get interesting pieces every day
             </Typography>
           </Grid>
-          {matches ? (
-            <Grid
-              item
-              container
-              alignItems="center"
-              justifyContent="center"
-              sx={{ marginTop: "60px" }}
-            >
-              <Grid item>
-                <img src={PostOne} alt="PostOne" />
-              </Grid>
-              <Grid item>
-                <img src={PostTwo} alt="PostTwo" />
-              </Grid>
-              <Grid item>
-                <img src={PostThree} alt="PostThree" />
-              </Grid>
-              <Grid item>
-                <img src={PostFour} alt="PostFour" />
-              </Grid>
-              <Grid item>
-                <img src={PostFive} alt="PostFive" />
-              </Grid>
-            </Grid>
-          ) : (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "55px",
-              }}
-            >
-              <div>
-                <img src={PostOne} alt="PostOne" />
-              </div>
-
-              <img src={PostTwo} alt="PostTwo" />
-            </div>
-          )}
-          <Grid
-            item
-            container
-            justifyContent="center"
-            sx={{ marginTop: "60px" }}
-          >
-            <Link sx={{ textDecoration: "none" }} href="#find">
-              <Button
-                sx={{
-                  textTransform: "none",
-                  borderRadius: "60px",
-                  border: "1px solid #000000",
-                  color: "#000000",
-                  background: "#FFFFFF",
-                  padding: "16px 36px",
-                  fontFamily: "'Raleway', sans-serif",
-                  fontWeight: 600,
-                  "&:active": {
-                    background: "#bbcede",
-                  },
-                  "&:hover": {
-                    background: "#bbcede",
-                  },
-                }}
-              >
-                View our Instagram
-              </Button>
-            </Link>
+        </Grid>
+      </div>
+      {matches ? (
+        <Grid
+          item
+          container
+          alignItems="center"
+          justifyContent="center"
+          sx={{ marginTop: "60px", padding: "0 32px" }}
+        >
+          <Grid item>
+            <img src={PostOne} alt="PostOne" />
+          </Grid>
+          <Grid item>
+            <img src={PostTwo} alt="PostTwo" />
+          </Grid>
+          <Grid item>
+            <img src={PostThree} alt="PostThree" />
+          </Grid>
+          <Grid item>
+            <img src={PostFour} alt="PostFour" />
+          </Grid>
+          <Grid item>
+            <img src={PostFive} alt="PostFive" />
           </Grid>
         </Grid>
+      ) : (
+        // <div
+        //   style={{
+        //     display: "flex",
+        //     justifyContent: "center",
+        //     alignItems: "center",
+        //     marginTop: "55px",
+        //   }}
+        // >
+        //   <div>
+        //     <img src={PostOne} alt="PostOne" />
+        //   </div>
+
+        //   <img src={PostTwo} alt="PostTwo" />
+        // </div>
+        <div
+          style={{
+            display: "flex",
+            // justifyContent: "center",
+            alignItems: "center",
+            marginTop: "55px",
+            overflowX: "scroll",
+            // width: "100%",
+            padding: "0 32px",
+          }}
+        >
+          <div>
+            <img src={PostOne} alt="PostOne" />
+          </div>
+          <div>
+            <img src={PostTwo} alt="PostTwo" />
+          </div>
+          <div>
+            <img src={PostThree} alt="PostThree" />
+          </div>
+          <div>
+            <img src={PostFour} alt="PostFour" />
+          </div>
+          <div>
+            <img src={PostFive} alt="PostFive" />
+          </div>
+        </div>
+      )}
+      <div
+        style={{
+          marginTop: "60px",
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <Link sx={{ textDecoration: "none" }} href="#find">
+          <Button
+            sx={{
+              textTransform: "none",
+              borderRadius: "60px",
+              border: "1px solid #000000",
+              color: "#000000",
+              background: "#FFFFFF",
+              padding: "16px 36px",
+              fontFamily: "'Raleway', sans-serif",
+              fontWeight: 600,
+              "&:active": {
+                background: "#bbcede",
+              },
+              "&:hover": {
+                background: "#bbcede",
+              },
+            }}
+          >
+            View our Instagram
+          </Button>
+        </Link>
       </div>
       <div
         id="catalogue"
@@ -368,7 +397,7 @@ function App() {
                 <Typography
                   sx={{
                     fontSize: "20px",
-                    fontWeight: selectedFilter === "All" ? 700 : 400,
+                    fontWeight: 700,
                     fontFamily: "'Raleway', sans-serif",
                     cursor: "pointer",
                     display: "flex",
@@ -439,6 +468,7 @@ function App() {
                       display: "flex",
                       alignItems: "center",
                     }}
+                    onClick={()=>setFilterPrice(!filterPrice)}
                   >
                     Sort
                     <span
@@ -720,8 +750,7 @@ function App() {
           margin: matches ? "60px 0" : "60px 0 0 0",
           padding: `${matches ? "0 120px" : "0 32px"}`,
           scrollBehavior: "smooth",
-          background:
-            "linear-gradient(180deg, rgba(217, 217, 217, 0) 45.08%, rgba(190, 173, 166, 0.288274) 58.52%, rgba(175, 148, 136, 0.45589) 64.34%, rgba(132, 77, 54, 0.920759) 76.44%, #7D4128 100%)",
+          background: !matches ? "linear-gradient(180deg, rgba(217, 217, 217, 0) 45.08%, rgba(190, 173, 166, 0.288274) 58.52%, rgba(175, 148, 136, 0.45589) 64.34%, rgba(132, 77, 54, 0.920759) 76.44%, #7D4128 100%)" : "#FFFFFF",
         }}
       >
         <Grid

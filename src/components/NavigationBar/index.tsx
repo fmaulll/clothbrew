@@ -71,6 +71,20 @@ const NavigationBar = () => {
           <Grid item sx={{ marginLeft: "40px" }}>
             <Link sx={styles.links}>Find us</Link>
           </Grid>
+          <Grid item sx={{ marginLeft: "100px" }}>
+            <Link sx={styles.links}>
+              <IconButton>
+                <Search />
+              </IconButton>
+            </Link>
+          </Grid>
+          <Grid item sx={{ marginLeft: "40px" }}>
+            <Link sx={styles.links}>
+              <IconButton>
+                <Cart />
+              </IconButton>
+            </Link>
+          </Grid>
         </Grid>
       ) : (
         <Grid item>
