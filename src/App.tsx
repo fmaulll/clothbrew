@@ -253,26 +253,28 @@ function App() {
             justifyContent="center"
             sx={{ marginTop: "60px" }}
           >
-            <Button
-              sx={{
-                textTransform: "none",
-                borderRadius: "60px",
-                border: "1px solid #000000",
-                color: "#000000",
-                background: "#FFFFFF",
-                padding: "16px 36px",
-                fontFamily: "'Raleway', sans-serif",
-                fontWeight: 600,
-                "&:active": {
-                  background: "#bbcede",
-                },
-                "&:hover": {
-                  background: "#bbcede",
-                },
-              }}
-            >
-              View our Instagram
-            </Button>
+            <Link sx={{ textDecoration: "none" }} href="#find">
+              <Button
+                sx={{
+                  textTransform: "none",
+                  borderRadius: "60px",
+                  border: "1px solid #000000",
+                  color: "#000000",
+                  background: "#FFFFFF",
+                  padding: "16px 36px",
+                  fontFamily: "'Raleway', sans-serif",
+                  fontWeight: 600,
+                  "&:active": {
+                    background: "#bbcede",
+                  },
+                  "&:hover": {
+                    background: "#bbcede",
+                  },
+                }}
+              >
+                View our Instagram
+              </Button>
+            </Link>
           </Grid>
         </Grid>
       </div>
@@ -512,6 +514,7 @@ function App() {
         </Grid>
       </div>
       <div
+        id="find"
         style={{
           margin: "60px 0",
           padding: `${matches ? "0 120px" : "0 32px"}`,
@@ -664,7 +667,7 @@ function App() {
             {" "}
             {/* Instagram Button */}
             <Link
-              href="https://shopee.co.id/"
+              href="https://instagram.com/"
               target="_blank"
               sx={{
                 textDecoration: "none",
@@ -714,9 +717,11 @@ function App() {
       <div
         id="contact"
         style={{
-          margin: matches ? "60px 0" : "60px 0 10px 0",
+          margin: matches ? "60px 0" : "60px 0 0 0",
           padding: `${matches ? "0 120px" : "0 32px"}`,
           scrollBehavior: "smooth",
+          background:
+            "linear-gradient(180deg, rgba(217, 217, 217, 0) 45.08%, rgba(190, 173, 166, 0.288274) 58.52%, rgba(175, 148, 136, 0.45589) 64.34%, rgba(132, 77, 54, 0.920759) 76.44%, #7D4128 100%)",
         }}
       >
         <Grid
@@ -761,7 +766,7 @@ function App() {
               >
                 {/* Phone Button 1 Desktop */}
                 <Link
-                  href="https://shopee.co.id/"
+                  href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
                   target="_blank"
                   sx={{
                     textDecoration: "none",
@@ -805,7 +810,7 @@ function App() {
                 </Link>
                 {/* Phone Button 2 Desktop */}
                 <Link
-                  href="https://shopee.co.id/"
+                  href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
                   target="_blank"
                   sx={{
                     textDecoration: "none",
@@ -856,7 +861,7 @@ function App() {
               {" "}
               {/* Phone Button 1 Mobile */}
               <Link
-                href="https://shopee.co.id/"
+                href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
                 target="_blank"
                 sx={{
                   textDecoration: "none",
@@ -875,6 +880,7 @@ function App() {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.4)",
                     "&:active": {
                       background: "#bbcede",
                     },
@@ -905,7 +911,7 @@ function App() {
               {" "}
               {/* Phone Button 2 Mobile */}
               <Link
-                href="https://shopee.co.id/"
+                href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
                 target="_blank"
                 sx={{
                   textDecoration: "none",
@@ -916,7 +922,7 @@ function App() {
                     textTransform: "none",
                     borderRadius: "60px",
                     color: "#000000",
-                    background: "#D9D9D9",
+                    background: "#C8E9EE",
                     width: "276px",
                     height: "71px",
                     fontFamily: "'Raleway', sans-serif",
@@ -924,6 +930,7 @@ function App() {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.4)",
                     "&:active": {
                       background: "#bbcede",
                     },
@@ -953,7 +960,7 @@ function App() {
             {" "}
             {/* Email Button */}
             <Link
-              href="https://shopee.co.id/"
+              href="mailto:clothbrew@gmail.com"
               target="_blank"
               sx={{
                 textDecoration: "none",
@@ -964,7 +971,7 @@ function App() {
                   textTransform: "none",
                   borderRadius: "60px",
                   color: "#000000",
-                  background: "#D9D9D9",
+                  background: "#DEC19B",
                   width: "276px",
                   height: "71px",
                   fontFamily: "'Raleway', sans-serif",
@@ -972,6 +979,7 @@ function App() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.4)",
                   "&:active": {
                     background: "#bbcede",
                   },
@@ -997,6 +1005,76 @@ function App() {
             </Link>
           </Grid>
         </Grid>
+        {!matches && (
+          <Grid
+            container
+            justifyContent="center"
+            sx={{ marginTop: "60px", paddingBottom: "40px" }}
+          >
+            <Grid item>
+              <Grid container alignItems="center">
+                <Grid item>
+                  <img src={ClothBrew} alt="ClothBrew Logo" />
+                </Grid>
+                <Grid item>
+                  <Typography
+                    sx={{
+                      fontSize: "16px",
+                      fontWeight: 600,
+                      color: "#FFFFFF",
+                      marginLeft: "10px",
+                      letterSpacing: "0.1em",
+                      fontFamiy: "'Mulish', sans-serif",
+                    }}
+                  >
+                    CLOTHBREW
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={12} sx={{ marginTop: "24px" }}>
+              <Grid
+                container
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Grid item>
+                  <Typography
+                    sx={{
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      color: "#FFFFFF",
+                      marginLeft: "10px",
+                      letterSpacing: "0.1em",
+                      fontFamiy: "'Mulish', sans-serif",
+                    }}
+                  >
+                    Privacy Policy
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <Grid container>
+                    <Grid item sx={{ marginLeft: "20px" }}>
+                      <Link>
+                        <Facebook style={{ width: "20px", fill: "#FFFFFF" }} />
+                      </Link>
+                    </Grid>
+                    <Grid item sx={{ marginLeft: "20px" }}>
+                      <Link>
+                        <Instagram style={{ width: "20px", fill: "#FFFFFF" }} />
+                      </Link>
+                    </Grid>
+                    <Grid item sx={{ marginLeft: "20px" }}>
+                      <Link>
+                        <Twitter style={{ width: "20px", fill: "#FFFFFF" }} />
+                      </Link>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
       </div>
       {matches && (
         <div
@@ -1214,7 +1292,7 @@ function App() {
           </Grid>
         </div>
       )}
-      {!matches && (
+      {/* {!matches && (
         <div
           style={{
             padding: `${matches ? "0 120px" : "0 32px"}`,
@@ -1287,7 +1365,7 @@ function App() {
             </Grid>
           </Grid>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
