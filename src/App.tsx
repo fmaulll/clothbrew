@@ -31,6 +31,42 @@ import { ReactComponent as Instagram } from "./assets/icons/Instagram.svg";
 import { ReactComponent as Facebook } from "./assets/icons/Facebook.svg";
 import { ReactComponent as Twitter } from "./assets/icons/Twitter.svg";
 import ClothBrew from "./assets/images/Logo.png";
+import { ReactComponent as Delivery } from "./assets/icons/Delivery.svg";
+import { ReactComponent as Protection } from "./assets/icons/Protection.svg";
+import { ReactComponent as Favorite } from "./assets/icons/Favorite.svg";
+import { ReactComponent as Recycling } from "./assets/icons/Recycling.svg";
+import RectangleBg from "./assets/images/RectangleBg.png";
+
+const services = [
+  {
+    icon: <Delivery />,
+    title: "Fast Delivery",
+    subTitle: "CUSTOMER COMES FIRST",
+    description:
+      "Kurang puas dengan produk JB? Balikiin aja! Kita refund uangmu 100%!",
+  },
+  {
+    icon: <Protection />,
+    title: "Garansi Kepuasan",
+    subTitle: "PASSION BEFORE MONEY",
+    description:
+      "Kurang puas dengan produk JB? Balikiin aja! Kita refund uangmu 100%!",
+  },
+  {
+    icon: <Favorite />,
+    title: "Local Pride",
+    subTitle: "EAGER TO GROWTH",
+    description:
+      "Kurang puas dengan produk JB? Balikiin aja! Kita refund uangmu 100%!",
+  },
+  {
+    icon: <Recycling />,
+    title: "Tukar Size",
+    subTitle: "PASSION BEFORE MONEY",
+    description:
+      "Kurang puas dengan produk JB? Balikiin aja! Kita refund uangmu 100%!",
+  },
+];
 
 function App() {
   const [selectedFilter, setSelectedFilter] = useState<string>("");
@@ -79,7 +115,7 @@ function App() {
                 fontWeight: 700,
                 color: "#FFFFFF",
                 fontFamily: "'Raleway', sans-serif",
-                lineHeight: `${matches ? "" : "100%"}`,
+                lineHeight: `100%`,
               }}
             >
               Your {!matches && <br />}Outfit {!matches && <br />}Express
@@ -95,7 +131,7 @@ function App() {
               </span>
             </Typography>
           </Grid>
-          <Grid item>
+          <Grid item sx={{ marginTop: "20px" }}>
             <Typography
               sx={{
                 fontSize: "14px",
@@ -115,35 +151,64 @@ function App() {
               />
             </Typography>
           </Grid>
-          <Grid item sx={{ marginTop: `${matches ? "60px" : "20px"}` }}>
-            <Link href="#contact" sx={{ textDecoration: "none" }}>
-              <Button
-                sx={{
-                  textTransform: "none",
-                  borderRadius: "60px",
-                  background: "#25313C",
-                  color: "#FFFFFF",
-                  padding: "16px 36px",
-                  fontFamily: "'Raleway', sans-serif",
-                  fontWeight: 600,
-                  "&:active": {
-                    background: "#3c4c5b",
-                  },
-                  "&:hover": {
-                    background: "#1d2730",
-                  },
-                }}
-              >
-                Connect With Us
-              </Button>
-            </Link>
+          <Grid
+            item
+            container
+            sx={{ marginTop: `${matches ? "60px" : "20px"}` }}
+          >
+            <Grid item>
+              <Link href="#contact" sx={{ textDecoration: "none" }}>
+                <Button
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "60px",
+                    background: "#25313C",
+                    color: "#FFFFFF",
+                    padding: "16px 36px",
+                    fontFamily: "'Raleway', sans-serif",
+                    fontWeight: 600,
+                    "&:active": {
+                      background: "#3c4c5b",
+                    },
+                    "&:hover": {
+                      background: "#1d2730",
+                    },
+                  }}
+                >
+                  Our Tokopedia
+                </Button>
+              </Link>
+            </Grid>
+            <Grid item sx={{ marginLeft: "40px" }}>
+              <Link href="#contact" sx={{ textDecoration: "none" }}>
+                <Button
+                  sx={{
+                    textTransform: "none",
+                    borderRadius: "60px",
+                    background: "#25313C",
+                    color: "#FFFFFF",
+                    padding: "16px 36px",
+                    fontFamily: "'Raleway', sans-serif",
+                    fontWeight: 600,
+                    "&:active": {
+                      background: "#3c4c5b",
+                    },
+                    "&:hover": {
+                      background: "#1d2730",
+                    },
+                  }}
+                >
+                  Our Instagram
+                </Button>
+              </Link>
+            </Grid>
           </Grid>
         </Grid>
       </div>
       <div
         style={{
           backgroundImage: `url(${BackgroundBottomHero})`,
-          height: `${matches ? "310px" : "215px"}`,
+          height: `${matches ? "225px" : "215px"}`,
           padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
@@ -276,37 +341,62 @@ function App() {
           </div>
         </div>
       )}
-      <div
-        style={{
-          marginTop: "60px",
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        <Link sx={{ textDecoration: "none" }} href="#find">
-          <Button
-            sx={{
-              textTransform: "none",
-              borderRadius: "60px",
-              border: "1px solid #000000",
-              color: "#000000",
-              background: "#FFFFFF",
-              padding: "16px 36px",
-              fontFamily: "'Raleway', sans-serif",
-              fontWeight: 600,
-              "&:active": {
-                background: "#bbcede",
-              },
-              "&:hover": {
-                background: "#bbcede",
-              },
-            }}
-          >
-            View our Instagram
-          </Button>
-        </Link>
-      </div>
+      <Grid container justifyContent="center" sx={{ marginTop: "60px" }}>
+        <Grid item>
+          <Link sx={{ textDecoration: "none" }} href="#find">
+            <Button
+              sx={{
+                textTransform: "none",
+                borderRadius: "60px",
+                border: "1px solid #000000",
+                color: "#000000",
+                background: "#FFFFFF",
+                padding: "16px 36px",
+                fontFamily: "'Raleway', sans-serif",
+                fontWeight: 600,
+                boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.25)",
+                "&:active": {
+                  background: "#bbcede",
+                },
+                "&:hover": {
+                  background: "#bbcede",
+                },
+              }}
+            >
+              View our Instagram
+            </Button>
+          </Link>
+        </Grid>
+        <Grid item sx={{ marginLeft: "40px" }}>
+          <Link sx={{ textDecoration: "none" }} href="#find">
+            <Button
+              sx={{
+                textTransform: "none",
+                borderRadius: "60px",
+                border: "1px solid rgba(0, 0, 0, 0.4)",
+                color: "#000000",
+                background: "#FFFFFF",
+                padding: "11px 36px",
+                fontFamily: "'Raleway', sans-serif",
+                fontWeight: 600,
+                boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.25)",
+                "&:active": {
+                  background: "#bbcede",
+                },
+                "&:hover": {
+                  background: "#bbcede",
+                },
+              }}
+            >
+              <img
+                style={{ height: "34.64px" }}
+                src={Tokopedia}
+                alt="Tokopedia"
+              />
+            </Button>
+          </Link>
+        </Grid>
+      </Grid>
       <div
         id="catalogue"
         style={{
@@ -468,7 +558,7 @@ function App() {
                       display: "flex",
                       alignItems: "center",
                     }}
-                    onClick={()=>setFilterPrice(!filterPrice)}
+                    onClick={() => setFilterPrice(!filterPrice)}
                   >
                     Sort
                     <span
@@ -497,7 +587,9 @@ function App() {
                 .filter((item) =>
                   item.category.toLowerCase().includes(selectedFilter)
                 )
-                .sort((a, b) => (filterPrice ? (a.value > b.value) : (a.value < b.value)) ? 1 : -1)
+                .sort((a, b) =>
+                  (filterPrice ? a.value > b.value : a.value < b.value) ? 1 : -1
+                )
                 .map((item) => (
                   <Grid item xs={matches ? 4 : 6} sx={{ marginBottom: "10px" }}>
                     <Grid
@@ -510,7 +602,10 @@ function App() {
                         sx={{ marginBottom: matches ? "55px" : "8px" }}
                       >
                         <img
-                          style={{ width: matches ? "100%" : "100%" }}
+                          style={{
+                            width: matches ? "100%" : "100%",
+                            borderRadius: "20px",
+                          }}
                           src={require(`${item.src}`)}
                           alt={item.name}
                         />
@@ -545,204 +640,128 @@ function App() {
         </Grid>
       </div>
       <div
-        id="find"
+        id="service"
         style={{
           margin: "60px 0",
           padding: `${matches ? "0 120px" : "0 32px"}`,
           scrollBehavior: "smooth",
+          position: "relative",
         }}
       >
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
+        <Grid container alignItems="center" direction="column">
           <Grid item>
             <Typography
               sx={{
-                fontSize: "48px",
-                fontWeight: 700,
-                fontFamily: "'Raleway', sans-serif",
-                textAlign: "center",
-                lineHeight: `${matches ? "" : "100%"}`,
+                fontWeight: 800,
+                fontFamily: "'Mulish', sans-serif",
+                color: "#BEB70A",
               }}
             >
-              Find <br />
-              Out Our
+              SERVICES
             </Typography>
           </Grid>
-          {matches && (
-            <Grid item sx={{ marginTop: "40px" }}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {/* Shopee Button Desktop */}
-                <Link href="https://shopee.co.id/" target="_blank">
-                  <Button
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: "60px",
-                      border: "2px solid #000000",
-                      color: "#000000",
-                      background: "#FFFFFF",
-                      width: "276px",
-                      height: "71px",
-                      fontFamily: "'Raleway', sans-serif",
-                      fontWeight: 600,
-                      "&:active": {
-                        background: "#bbcede",
-                      },
-                      "&:hover": {
-                        background: "#bbcede",
-                      },
-                    }}
-                  >
-                    <img src={Shopee} alt="Shopee" />
-                  </Button>
-                </Link>
-                {/* Tokopedia Button Dekstop */}
-                <Link
-                  href="https://tokopedia.com/"
-                  target="_blank"
-                  sx={{ marginLeft: "15px" }}
-                >
-                  <Button
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: "60px",
-                      border: "2px solid #000000",
-                      color: "#000000",
-                      background: "#FFFFFF",
-                      width: "276px",
-                      height: "71px",
-                      fontFamily: "'Raleway', sans-serif",
-                      fontWeight: 600,
-                      "&:active": {
-                        background: "#bbcede",
-                      },
-                      "&:hover": {
-                        background: "#bbcede",
-                      },
-                    }}
-                  >
-                    <img src={Tokopedia} alt="Tokopedia" />
-                  </Button>
-                </Link>
-              </Box>
-            </Grid>
-          )}
-          {!matches && (
-            <Grid item sx={{ marginTop: "40px" }}>
-              {" "}
-              {/* Shopee Button Mobile */}
-              <Link href="https://shopee.co.id/" target="_blank">
-                <Button
-                  sx={{
-                    textTransform: "none",
-                    borderRadius: "60px",
-                    border: "2px solid #000000",
-                    color: "#000000",
-                    background: "#FFFFFF",
-                    width: "276px",
-                    height: "71px",
-                    fontFamily: "'Raleway', sans-serif",
-                    fontWeight: 600,
-                    "&:active": {
-                      background: "#bbcede",
-                    },
-                    "&:hover": {
-                      background: "#bbcede",
-                    },
-                  }}
-                >
-                  <img src={Shopee} alt="Shopee" />
-                </Button>
-              </Link>
-            </Grid>
-          )}
-          {!matches && (
-            <Grid item sx={{ marginTop: "20px" }}>
-              {" "}
-              {/* Tokopedia Button Mobile */}
-              <Link href="https://tokopedia.com/" target="_blank">
-                <Button
-                  sx={{
-                    textTransform: "none",
-                    borderRadius: "60px",
-                    border: "2px solid #000000",
-                    color: "#000000",
-                    background: "#FFFFFF",
-                    width: "276px",
-                    height: "71px",
-                    fontFamily: "'Raleway', sans-serif",
-                    fontWeight: 600,
-                    "&:active": {
-                      background: "#bbcede",
-                    },
-                    "&:hover": {
-                      background: "#bbcede",
-                    },
-                  }}
-                >
-                  <img src={Tokopedia} alt="Tokopedia" />
-                </Button>
-              </Link>
-            </Grid>
-          )}
-          <Grid item sx={{ marginTop: "20px" }}>
-            {" "}
-            {/* Instagram Button */}
-            <Link
-              href="https://instagram.com/"
-              target="_blank"
+          <Grid item sx={{ marginTop: "40px" }}>
+            <Typography
               sx={{
-                textDecoration: "none",
+                fontWeight: 700,
+                fontFamily: "'Mulish', sans-serif",
+                fontSize: "48px",
+                color: "#25313C",
+                textAlign: "center",
+                lineHeight: "100%",
               }}
             >
-              <Button
-                sx={{
-                  textTransform: "none",
-                  borderRadius: "60px",
-                  border: "2px solid #000000",
-                  color: "#000000",
-                  background: "#FFFFFF",
-                  width: "276px",
-                  height: "71px",
-                  fontFamily: "'Raleway', sans-serif",
-                  fontWeight: 600,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  "&:active": {
-                    background: "#bbcede",
-                  },
-                  "&:hover": {
-                    background: "#bbcede",
-                  },
-                }}
-              >
-                <Instagram />{" "}
-                <Typography
-                  sx={{
-                    textDecoration: "none",
-                    fontSize: "24px",
-                    fontWeight: 600,
-                    fontFamily: "'Raleway', sans-serif",
-                    lineHeight: `${matches ? "" : "100%"}`,
-                    marginLeft: "12px",
-                  }}
-                >
-                  Instagram
-                </Typography>
-              </Button>
-            </Link>
+              The Value We <br />
+              Live By
+            </Typography>
+          </Grid>
+          <Grid item sx={{ marginTop: "20px" }}>
+            <Typography
+              sx={{
+                fontWeight: 400,
+                fontFamily: "'Raleway', sans-serif",
+                fontSize: "16px",
+                color: "#25313C",
+                textAlign: "center",
+              }}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et <br />
+              dolore magna aliqua.
+            </Typography>
           </Grid>
         </Grid>
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          spacing={4}
+          sx={{ paddingBottom: "70px", marginTop: "95px" }}
+        >
+          {services.map((item) => (
+            <Grid item xs={3}>
+              <Box
+                sx={{
+                  padding: "0px 40px",
+                  background: "#FFFFFF",
+                  height: "230px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
+                <Grid container direction="column">
+                  <Grid item>{item.icon}</Grid>
+                  <Grid item sx={{ marginTop: "20px" }}>
+                    <Typography
+                      sx={{
+                        fontSize: "24px",
+                        fontWeight: 700,
+                        lineHeight: "30px",
+                        color: "#25313C",
+                        fontFamily: "'Mulish', sans-serif",
+                      }}
+                    >
+                      {item.title}
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={{ marginTop: "10px" }}>
+                    <Typography
+                      sx={{
+                        fontSize: "12px",
+                        fontWeight: 700,
+                        letterSpacing: "0.1em",
+                        color: "#6D7D8B",
+                        fontFamily: "'Mulish', sans-serif",
+                      }}
+                    >
+                      {item.subTitle}
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={{ marginTop: "10px" }}>
+                    <Typography
+                      sx={{
+                        fontSize: "12px",
+                        color: "#25313C",
+                        fontFamily: "'Mulish', sans-serif",
+                      }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+        <img
+          style={{
+            position: "absolute",
+            bottom: 0,
+            zIndex: "-1",
+          }}
+          src={RectangleBg}
+        />
       </div>
 
       <div
@@ -751,7 +770,9 @@ function App() {
           margin: matches ? "60px 0" : "60px 0 0 0",
           padding: `${matches ? "0 120px" : "0 32px"}`,
           scrollBehavior: "smooth",
-          background: !matches ? "linear-gradient(180deg, rgba(217, 217, 217, 0) 45.08%, rgba(190, 173, 166, 0.288274) 58.52%, rgba(175, 148, 136, 0.45589) 64.34%, rgba(132, 77, 54, 0.920759) 76.44%, #7D4128 100%)" : "#FFFFFF",
+          background: !matches
+            ? "linear-gradient(180deg, rgba(217, 217, 217, 0) 45.08%, rgba(190, 173, 166, 0.288274) 58.52%, rgba(175, 148, 136, 0.45589) 64.34%, rgba(132, 77, 54, 0.920759) 76.44%, #7D4128 100%)"
+            : "#FFFFFF",
         }}
       >
         <Grid
@@ -1009,7 +1030,9 @@ function App() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  boxShadow: matches ? "none" : "0px 6px 8px rgba(0, 0, 0, 0.4)",
+                  boxShadow: matches
+                    ? "none"
+                    : "0px 6px 8px rgba(0, 0, 0, 0.4)",
                   "&:active": {
                     background: "#bbcede",
                   },
