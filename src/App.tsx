@@ -12,6 +12,7 @@ import {
 import NavigationBar from "./components/NavigationBar";
 import BackgroundHero from "./assets/images/Background-Hero.png";
 import BackgroundBottomHero from "./assets/images/Hero-Bottom.png";
+import BottomHeroMobile from "./assets/images/Background-Hero-Bottom.png";
 import { ReactComponent as ArrowRight } from "./assets/icons/ArrowSmall.svg";
 import PostOne from "./assets/images/post1.png";
 import PostTwo from "./assets/images/post2.png";
@@ -25,7 +26,7 @@ import Shopee from "./assets/images/Shopee.png";
 import Tokopedia from "./assets/images/Tokopedia.png";
 // import Instagram from "./assets/images/Instagram.png";
 import { ReactComponent as Whatsapp } from "./assets/icons/Whatsapp.svg";
-import { ReactComponent as Mail } from "./assets/icons/Mail.svg";
+import { ReactComponent as Mail } from "./assets/icons/MailWhite.svg";
 import LogoDark from "./assets/images/Logo-Dark.png";
 import { ReactComponent as Instagram } from "./assets/icons/Instagram.svg";
 import { ReactComponent as Facebook } from "./assets/icons/Facebook.svg";
@@ -36,6 +37,7 @@ import { ReactComponent as Protection } from "./assets/icons/Protection.svg";
 import { ReactComponent as Favorite } from "./assets/icons/Favorite.svg";
 import { ReactComponent as Recycling } from "./assets/icons/Recycling.svg";
 import RectangleBg from "./assets/images/RectangleBg.png";
+import BaristaImage from "./assets/images/BaristaImage.png";
 
 const services = [
   {
@@ -179,7 +181,13 @@ function App() {
                 </Button>
               </Link>
             </Grid>
-            <Grid item sx={{ marginLeft: "40px" }}>
+            <Grid
+              item
+              sx={{
+                marginLeft: matches ? "40px" : "0px",
+                marginTop: matches ? "0px" : "16px",
+              }}
+            >
               <Link href="#contact" sx={{ textDecoration: "none" }}>
                 <Button
                   sx={{
@@ -207,7 +215,9 @@ function App() {
       </div>
       <div
         style={{
-          backgroundImage: `url(${BackgroundBottomHero})`,
+          backgroundImage: `url(${
+            matches ? BackgroundBottomHero : BottomHeroMobile
+          })`,
           height: `${matches ? "225px" : "215px"}`,
           padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
@@ -367,7 +377,13 @@ function App() {
             </Button>
           </Link>
         </Grid>
-        <Grid item sx={{ marginLeft: "40px" }}>
+        <Grid
+          item
+          sx={{
+            marginLeft: matches ? "40px" : "0px",
+            marginTop: matches ? "0px" : "20px",
+          }}
+        >
           <Link sx={{ textDecoration: "none" }} href="#find">
             <Button
               sx={{
@@ -604,7 +620,7 @@ function App() {
                         <img
                           style={{
                             width: matches ? "100%" : "100%",
-                            borderRadius: "20px",
+                            borderRadius: matches ? "20px" : "8px",
                           }}
                           src={require(`${item.src}`)}
                           alt={item.name}
@@ -643,12 +659,16 @@ function App() {
         id="service"
         style={{
           margin: "60px 0",
-          padding: `${matches ? "0 120px" : "0 32px"}`,
           scrollBehavior: "smooth",
           position: "relative",
         }}
       >
-        <Grid container alignItems="center" direction="column">
+        <Grid
+          container
+          alignItems="center"
+          direction="column"
+          sx={{ padding: "0px 32px" }}
+        >
           <Grid item>
             <Typography
               sx={{
@@ -691,28 +711,97 @@ function App() {
             </Typography>
           </Grid>
         </Grid>
-        <Grid
-          container
-          alignItems="center"
-          justifyContent="center"
-          spacing={4}
-          sx={{ paddingBottom: "70px", marginTop: "95px" }}
-        >
-          {services.map((item) => (
-            <Grid item xs={3}>
-              <Box
-                sx={{
-                  padding: "0px 40px",
-                  background: "#FFFFFF",
-                  height: "230px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <Grid container direction="column">
+        {matches && (
+          <Grid
+            container
+            alignItems="center"
+            justifyContent="center"
+            spacing={4}
+            sx={{
+              padding: "0px 120px 70px 120px",
+              marginTop: "95px",
+              position: "relative",
+            }}
+          >
+            {services.map((item) => (
+              <Grid item xs={3}>
+                <Box
+                  sx={{
+                    padding: "0px 40px",
+                    background: "#FFFFFF",
+                    height: "230px",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Grid container direction="column">
+                    <Grid item>{item.icon}</Grid>
+                    <Grid item sx={{ marginTop: "20px" }}>
+                      <Typography
+                        sx={{
+                          fontSize: "24px",
+                          fontWeight: 700,
+                          lineHeight: "30px",
+                          color: "#25313C",
+                          fontFamily: "'Mulish', sans-serif",
+                        }}
+                      >
+                        {item.title}
+                      </Typography>
+                    </Grid>
+                    <Grid item sx={{ marginTop: "10px" }}>
+                      <Typography
+                        sx={{
+                          fontSize: "12px",
+                          fontWeight: 700,
+                          letterSpacing: "0.1em",
+                          color: "#6D7D8B",
+                          fontFamily: "'Mulish', sans-serif",
+                        }}
+                      >
+                        {item.subTitle}
+                      </Typography>
+                    </Grid>
+                    <Grid item sx={{ marginTop: "10px" }}>
+                      <Typography
+                        sx={{
+                          fontSize: "12px",
+                          color: "#25313C",
+                          fontFamily: "'Mulish', sans-serif",
+                        }}
+                      >
+                        {item.description}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Grid>
+            ))}
+            <img
+              style={{
+                position: "absolute",
+                bottom: 0,
+                zIndex: "-1",
+              }}
+              src={RectangleBg}
+            />
+          </Grid>
+        )}
+        {!matches && (
+          <Grid
+            container
+            sx={{
+              background: "linear-gradient(180deg, #F1F9FF 0%, #FFF8F1 100%)",
+              padding: "30px 32px",
+              marginTop: "60px",
+            }}
+          >
+            {services.map((item, index) => (
+              <Grid item sx={{ marginTop: index !== 0 ? "40px" : "0px" }}>
+                <Grid container direction="column" alignItems="center">
                   <Grid item>{item.icon}</Grid>
-                  <Grid item sx={{ marginTop: "20px" }}>
+                  <Grid item sx={{ marginTop: "10px" }}>
                     <Typography
                       sx={{
                         fontSize: "24px",
@@ -744,391 +833,261 @@ function App() {
                         fontSize: "12px",
                         color: "#25313C",
                         fontFamily: "'Mulish', sans-serif",
+                        textAlign: "center",
                       }}
                     >
                       {item.description}
                     </Typography>
                   </Grid>
                 </Grid>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-        <img
-          style={{
-            position: "absolute",
-            bottom: 0,
-            zIndex: "-1",
-          }}
-          src={RectangleBg}
-        />
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </div>
-
       <div
         id="contact"
         style={{
-          margin: matches ? "60px 0" : "60px 0 0 0",
-          padding: `${matches ? "0 120px" : "0 32px"}`,
+          margin: "100px 0",
           scrollBehavior: "smooth",
-          background: !matches
-            ? "linear-gradient(180deg, rgba(217, 217, 217, 0) 45.08%, rgba(190, 173, 166, 0.288274) 58.52%, rgba(175, 148, 136, 0.45589) 64.34%, rgba(132, 77, 54, 0.920759) 76.44%, #7D4128 100%)"
-            : "#FFFFFF",
+          position: "relative",
         }}
       >
-        <Grid
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-        >
+        <Grid container alignItems="center" direction="column">
           <Grid item>
             <Typography
               sx={{
-                fontSize: "48px",
                 fontWeight: 800,
-                fontFamily: "'Raleway', sans-serif",
-                textAlign: matches ? "center" : "start",
-                lineHeight: `${matches ? "" : "100%"}`,
+                fontFamily: "'Mulish', sans-serif",
+                color: "#BEB70A",
               }}
             >
-              You have any questions?
+              CONTACT
             </Typography>
+          </Grid>
+          <Grid item sx={{ marginTop: "40px" }}>
             <Typography
               sx={{
-                fontSize: "18px",
-                fontWeight: 600,
-                fontFamily: "'Raleway', sans-serif",
-                textAlign: "start",
-                lineHeight: `${matches ? "" : "163%"}`,
-                marginTop: "20px",
+                fontWeight: 700,
+                fontFamily: "'Mulish', sans-serif",
+                fontSize: "48px",
+                color: "#25313C",
+                textAlign: "center",
+                lineHeight: "100%",
               }}
             >
-              Please don’t be hesitate to {!matches && <br />}contact us
+              Do you want to talk or <br />
+              consult with us?
             </Typography>
           </Grid>
-          {matches && (
-            <Grid item sx={{ marginTop: "40px" }}>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                {/* Phone Button 1 Desktop */}
-                <Link
-                  href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
-                  target="_blank"
-                  sx={{
-                    textDecoration: "none",
-                  }}
-                >
-                  <Button
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: "60px",
-                      color: "#000000",
-                      background: "#D9D9D9",
-                      width: "276px",
-                      height: "71px",
-                      fontFamily: "'Raleway', sans-serif",
-                      fontWeight: 600,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      "&:active": {
-                        background: "#bbcede",
-                      },
-                      "&:hover": {
-                        background: "#bbcede",
-                      },
-                    }}
-                  >
-                    <Whatsapp />
-                    <Typography
-                      sx={{
-                        textDecoration: "none",
-                        fontSize: "18px",
-                        fontWeight: 600,
-                        fontFamily: "'Mulish', sans-serif",
-                        lineHeight: `${matches ? "" : "100%"}`,
-                        marginLeft: "12px",
-                      }}
-                    >
-                      0812-xxxx-xxxx
-                    </Typography>
-                  </Button>
-                </Link>
-                {/* Phone Button 2 Desktop */}
-                <Link
-                  href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
-                  target="_blank"
-                  sx={{
-                    textDecoration: "none",
-                    marginLeft: "15px",
-                  }}
-                >
-                  <Button
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: "60px",
-                      color: "#000000",
-                      background: "#D9D9D9",
-                      width: "276px",
-                      height: "71px",
-                      fontFamily: "'Raleway', sans-serif",
-                      fontWeight: 600,
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      "&:active": {
-                        background: "#bbcede",
-                      },
-                      "&:hover": {
-                        background: "#bbcede",
-                      },
-                    }}
-                  >
-                    <Whatsapp />
-                    <Typography
-                      sx={{
-                        textDecoration: "none",
-                        fontSize: "18px",
-                        fontWeight: 600,
-                        fontFamily: "'Mulish', sans-serif",
-                        lineHeight: `${matches ? "" : "100%"}`,
-                        marginLeft: "12px",
-                      }}
-                    >
-                      0812-xxxx-xxxx
-                    </Typography>
-                  </Button>
-                </Link>
-              </Box>
-            </Grid>
-          )}
-          {!matches && (
-            <Grid item sx={{ marginTop: "40px" }}>
-              {" "}
-              {/* Phone Button 1 Mobile */}
-              <Link
-                href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
-                target="_blank"
-                sx={{
-                  textDecoration: "none",
-                }}
-              >
-                <Button
-                  sx={{
-                    textTransform: "none",
-                    borderRadius: "60px",
-                    color: "#000000",
-                    background: "#D9D9D9",
-                    width: "276px",
-                    height: "71px",
-                    fontFamily: "'Raleway', sans-serif",
-                    fontWeight: 600,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.4)",
-                    "&:active": {
-                      background: "#bbcede",
-                    },
-                    "&:hover": {
-                      background: "#bbcede",
-                    },
-                  }}
-                >
-                  <Whatsapp />
-                  <Typography
-                    sx={{
-                      textDecoration: "none",
-                      fontSize: "18px",
-                      fontWeight: 600,
-                      fontFamily: "'Mulish', sans-serif",
-                      lineHeight: `${matches ? "" : "100%"}`,
-                      marginLeft: "12px",
-                    }}
-                  >
-                    0812-xxxx-xxxx
-                  </Typography>
-                </Button>
-              </Link>
-            </Grid>
-          )}
-          {!matches && (
-            <Grid item sx={{ marginTop: "20px" }}>
-              {" "}
-              {/* Phone Button 2 Mobile */}
-              <Link
-                href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
-                target="_blank"
-                sx={{
-                  textDecoration: "none",
-                }}
-              >
-                <Button
-                  sx={{
-                    textTransform: "none",
-                    borderRadius: "60px",
-                    color: "#000000",
-                    background: "#C8E9EE",
-                    width: "276px",
-                    height: "71px",
-                    fontFamily: "'Raleway', sans-serif",
-                    fontWeight: 600,
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.4)",
-                    "&:active": {
-                      background: "#bbcede",
-                    },
-                    "&:hover": {
-                      background: "#bbcede",
-                    },
-                  }}
-                >
-                  <Whatsapp />
-                  <Typography
-                    sx={{
-                      textDecoration: "none",
-                      fontSize: "18px",
-                      fontWeight: 600,
-                      fontFamily: "'Mulish', sans-serif",
-                      lineHeight: `${matches ? "" : "100%"}`,
-                      marginLeft: "12px",
-                    }}
-                  >
-                    0812-xxxx-xxxx
-                  </Typography>
-                </Button>
-              </Link>
-            </Grid>
-          )}
           <Grid item sx={{ marginTop: "20px" }}>
-            {" "}
-            {/* Email Button */}
-            <Link
-              href="mailto:clothbrew@gmail.com"
-              target="_blank"
+            <Typography
               sx={{
-                textDecoration: "none",
+                fontWeight: 400,
+                fontFamily: "'Raleway', sans-serif",
+                fontSize: "16px",
+                color: "#25313C",
+                textAlign: "center",
               }}
             >
-              <Button
-                sx={{
-                  textTransform: "none",
-                  borderRadius: "60px",
-                  color: "#000000",
-                  background: matches ? "#D9D9D9" : "#DEC19B",
-                  width: "276px",
-                  height: "71px",
-                  fontFamily: "'Raleway', sans-serif",
-                  fontWeight: 600,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  boxShadow: matches
-                    ? "none"
-                    : "0px 6px 8px rgba(0, 0, 0, 0.4)",
-                  "&:active": {
-                    background: "#bbcede",
-                  },
-                  "&:hover": {
-                    background: "#bbcede",
-                  },
-                }}
-              >
-                <Mail />
-                <Typography
-                  sx={{
-                    textDecoration: "none",
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    fontFamily: "'Mulish', sans-serif",
-                    lineHeight: `${matches ? "" : "100%"}`,
-                    marginLeft: "12px",
-                  }}
-                >
-                  clothbrew@gmail.com
-                </Typography>
-              </Button>
-            </Link>
+              If you are looking for an answer or a coffee enthusiast, please
+              don’t be <br />
+              hesitate to contact us
+            </Typography>
           </Grid>
         </Grid>
-        {!matches && (
-          <Grid
-            container
-            justifyContent="center"
-            sx={{ marginTop: "60px", paddingBottom: "40px" }}
-          >
-            <Grid item>
-              <Grid container alignItems="center">
-                <Grid item>
-                  <img src={ClothBrew} alt="ClothBrew Logo" />
-                </Grid>
-                <Grid item>
-                  <Typography
-                    sx={{
-                      fontSize: "16px",
-                      fontWeight: 600,
-                      color: "#FFFFFF",
-                      marginLeft: "10px",
-                      letterSpacing: "0.1em",
-                      fontFamiy: "'Mulish', sans-serif",
-                    }}
-                  >
-                    CLOTHBREW
-                  </Typography>
+        <Grid
+          container
+          justifyContent="space-between"
+          sx={{ marginTop: "60px" }}
+        >
+          <Grid item>
+            <Grid container direction="column">
+              <Grid item sx={{ padding: "40px 120px" }}>
+                <Grid container direction="column">
+                  <Grid item>
+                    <Typography
+                      sx={{
+                        fontSize: "32px",
+                        fontWeight: 800,
+                        fontFamily: "'Mulish', sans-serif",
+                      }}
+                    >
+                      Phone Number
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={{ marginTop: "40px" }}>
+                    <div
+                      style={{ borderTop: "2px solid #25313C", width: "100px" }}
+                    />
+                  </Grid>
+                  <Grid item sx={{ marginTop: "40px" }}>
+                    <Link
+                      href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
+                      target="_blank"
+                      sx={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Button
+                        sx={{
+                          textTransform: "none",
+                          color: "#000000",
+                          background: "none",
+                          fontFamily: "'Raleway', sans-serif",
+                          fontWeight: 600,
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Whatsapp />
+                        <Typography
+                          sx={{
+                            textDecoration: "none",
+                            fontSize: "24px",
+                            fontWeight: 400,
+                            fontFamily: "'Mulish', sans-serif",
+                            marginLeft: "12px",
+                          }}
+                        >
+                          0812-xxxx-xxxx
+                        </Typography>
+                      </Button>
+                    </Link>
+                  </Grid>
+                  <Grid item sx={{ marginTop: "40px" }}>
+                    <Link
+                      href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
+                      target="_blank"
+                      sx={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Button
+                        sx={{
+                          textTransform: "none",
+                          color: "#000000",
+                          background: "none",
+                          fontFamily: "'Raleway', sans-serif",
+                          fontWeight: 600,
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Whatsapp />
+                        <Typography
+                          sx={{
+                            textDecoration: "none",
+                            fontSize: "24px",
+                            fontWeight: 400,
+                            fontFamily: "'Mulish', sans-serif",
+                            marginLeft: "12px",
+                          }}
+                        >
+                          0812-xxxx-xxxx
+                        </Typography>
+                      </Button>
+                    </Link>
+                  </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid item xs={12} sx={{ marginTop: "24px" }}>
+
               <Grid
-                container
-                alignItems="center"
-                justifyContent="space-between"
+                item
+                sx={{
+                  padding: "40px 120px",
+                  background: "rgba(137, 92, 64, 0.05)",
+                  boxShadow: "8px 6px 12px rgba(192, 40, 40, 0.08)",
+                }}
               >
-                <Grid item>
-                  <Typography
-                    sx={{
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      color: "#FFFFFF",
-                      marginLeft: "10px",
-                      letterSpacing: "0.1em",
-                      fontFamiy: "'Mulish', sans-serif",
-                    }}
-                  >
-                    Privacy Policy
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Grid container>
-                    <Grid item sx={{ marginLeft: "20px" }}>
-                      <Link>
-                        <Facebook style={{ width: "20px", fill: "#FFFFFF" }} />
-                      </Link>
-                    </Grid>
-                    <Grid item sx={{ marginLeft: "20px" }}>
-                      <Link>
-                        <Instagram style={{ width: "20px", fill: "#FFFFFF" }} />
-                      </Link>
-                    </Grid>
-                    <Grid item sx={{ marginLeft: "20px" }}>
-                      <Link>
-                        <Twitter style={{ width: "20px", fill: "#FFFFFF" }} />
-                      </Link>
-                    </Grid>
+                <Grid container direction="column">
+                  <Grid item>
+                    <Typography
+                      sx={{
+                        fontSize: "32px",
+                        fontWeight: 800,
+                        fontFamily: "'Mulish', sans-serif",
+                      }}
+                    >
+                      E-mail Address
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={{ marginTop: "40px" }}>
+                    <div
+                      style={{ borderTop: "2px solid #25313C", width: "100px" }}
+                    />
+                  </Grid>
+
+                  <Grid item sx={{ marginTop: "40px" }}>
+                    <Typography
+                      sx={{
+                        textDecoration: "none",
+                        fontSize: "24px",
+                        fontWeight: 400,
+                        fontFamily: "'Mulish', sans-serif",
+                      }}
+                    >
+                      clothbrew@gmail.com
+                    </Typography>
+                  </Grid>
+                  <Grid item sx={{ marginTop: "40px" }}>
+                    <Link
+                      href="mailto:clothbrew@gmail.com"
+                      target="_blank"
+                      sx={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Button
+                        sx={{
+                          textTransform: "none",
+                          borderRadius: "16px",
+                          color: "#000000",
+                          background: "#208DB0",
+                          width: "205px",
+                          height: "64px",
+                          fontFamily: "'Raleway', sans-serif",
+                          fontWeight: 600,
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          "&:active": {
+                            background: "#bbcede",
+                          },
+                          "&:hover": {
+                            background: "#bbcede",
+                          },
+                        }}
+                      >
+                        <Mail />
+                        <Typography
+                          sx={{
+                            textDecoration: "none",
+                            fontSize: "18px",
+                            fontWeight: 600,
+                            fontFamily: "'Mulish', sans-serif",
+                            lineHeight: `${matches ? "" : "100%"}`,
+                            marginLeft: "12px",
+                            color: "#FFFFFF",
+                          }}
+                        >
+                          E-mail us
+                        </Typography>
+                      </Button>
+                    </Link>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-        )}
+          <Grid item sx={{ marginTop: "40px" }}>
+            <img src={BaristaImage} alt="barista preparing coffee" />
+          </Grid>
+        </Grid>
       </div>
+
       {matches && (
         <div
           style={{
