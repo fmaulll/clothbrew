@@ -97,7 +97,7 @@ function App() {
       <div
         style={{
           backgroundImage: `url(${BackgroundHero})`,
-          height: `${matches ? "100vh" : "calc(100vh - 210px)"}`,
+          height: `${matches ? "100vh" : "calc(100vh - 200px)"}`,
           padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
@@ -220,7 +220,7 @@ function App() {
           backgroundImage: `url(${
             matches ? BackgroundBottomHero : BottomHeroMobile
           })`,
-          height: `${matches ? "225px" : "215px"}`,
+          height: `${matches ? "225px" : "200px"}`,
           padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
