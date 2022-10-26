@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import NavigationBar from "./components/NavigationBar";
 import BackgroundHero from "./assets/images/Background-Hero.png";
+import BgMobile from "./assets/images/BgMobile.png";
 import BackgroundBottomHero from "./assets/images/Hero-Bottom.png";
 import BottomHeroMobile from "./assets/images/Background-Hero-Bottom.png";
 import { ReactComponent as ArrowRight } from "./assets/icons/ArrowSmall.svg";
@@ -96,8 +97,8 @@ function App() {
     >
       <div
         style={{
-          backgroundImage: `url(${BackgroundHero})`,
-          height: `${matches ? "100vh" : "calc(100vh - 200px)"}`,
+          backgroundImage: `url(${matches ? BackgroundHero : BgMobile})`,
+          height: `${matches ? "100vh" : "100vh"}`,
           padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
@@ -121,7 +122,12 @@ function App() {
                 lineHeight: `100%`,
               }}
             >
-              Your {!matches && <br />}Outfit {!matches && <br />}Express
+              {matches && `Your Outfit Express`}
+              {!matches && (
+                <>
+                  Your {!matches && <br />}outfit {!matches && <br />}express
+                </>
+              )}
               <br />
               <span
                 style={{
@@ -149,7 +155,7 @@ function App() {
                 style={{
                   fill: "#FFFFFF",
                   marginLeft: "5px",
-                  marginTop: `${matches ? "10px" : "20px"}`,
+                  marginTop: `10px`,
                 }}
               />
             </Typography>
@@ -157,7 +163,7 @@ function App() {
           <Grid
             item
             container
-            sx={{ marginTop: `${matches ? "60px" : "20px"}` }}
+            sx={{ marginTop: `${matches ? "60px" : "36px"}` }}
             direction={matches ? "row" : "column"}
           >
             <Grid item>
@@ -168,9 +174,13 @@ function App() {
                     borderRadius: "60px",
                     background: "#25313C",
                     color: "#FFFFFF",
-                    padding: "16px 36px",
+                    width: "205px",
+                    height: "56px",
                     fontFamily: "'Raleway', sans-serif",
                     fontWeight: 600,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                     "&:active": {
                       background: "#3c4c5b",
                     },
@@ -197,9 +207,13 @@ function App() {
                     borderRadius: "60px",
                     background: "#25313C",
                     color: "#FFFFFF",
-                    padding: "16px 36px",
+                    width: "205px",
+                    height: "56px",
                     fontFamily: "'Raleway', sans-serif",
                     fontWeight: 600,
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                     "&:active": {
                       background: "#3c4c5b",
                     },
@@ -241,8 +255,8 @@ function App() {
         >
           “True change cannot be made {!matches && <br />}if it is bound by
           laws, {!matches && <br />}limitations, and predictions.
-          <br /> <span style={{ fontWeight: 700 }}>Caffeine</span> is one of those tools {!matches && <br />}that can break
-          em.”
+          <br /> <span style={{ fontWeight: 700 }}>Caffeine</span> is one of
+          those tools {!matches && <br />}that can break em.”
         </Typography>
       </div>
       <div
@@ -435,7 +449,7 @@ function App() {
                 fontSize: "56px",
                 fontWeight: 500,
                 fontFamily: "'Raleway', sans-serif",
-                color: "#25313C"
+                color: "#25313C",
               }}
             >
               Catalogue
@@ -457,7 +471,7 @@ function App() {
                         fontWeight: selectedFilter === "" ? 700 : 400,
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
-                        color: "#25313C"
+                        color: "#25313C",
                       }}
                       onClick={() => setSelectedFilter("")}
                     >
@@ -472,7 +486,7 @@ function App() {
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
-                        color: "#25313C"
+                        color: "#25313C",
                       }}
                       onClick={() => setSelectedFilter("coffee")}
                     >
@@ -487,7 +501,7 @@ function App() {
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
-                        color: "#25313C"
+                        color: "#25313C",
                       }}
                       onClick={() => setSelectedFilter("shirt")}
                     >
@@ -502,7 +516,7 @@ function App() {
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
-                        color: "#25313C"
+                        color: "#25313C",
                       }}
                       onClick={() => setSelectedFilter("machine")}
                     >
@@ -586,7 +600,7 @@ function App() {
                       cursor: "pointer",
                       display: "flex",
                       alignItems: "center",
-                      color: "#25313C"
+                      color: "#25313C",
                     }}
                     onClick={() => setFilterPrice(!filterPrice)}
                   >
@@ -930,7 +944,7 @@ function App() {
                         fontSize: "32px",
                         fontWeight: 800,
                         fontFamily: "'Mulish', sans-serif",
-                        color: "#25313C"
+                        color: "#25313C",
                       }}
                     >
                       Phone Number
@@ -942,84 +956,90 @@ function App() {
                     />
                   </Grid>
                   <Grid item sx={{ marginTop: "40px" }}>
-                    <Link
-                      href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
-                      target="_blank"
-                      sx={{
-                        textDecoration: "none",
-                      }}
-                    >
-                      <Button
-                        sx={{
-                          textTransform: "none",
-                          color: "#25313C",
-                          borderRadius: matches ? "0px" : "60px",
-                          boxShadow: matches
-                            ? ""
-                            : "0px 6px 8px rgba(127, 55, 55, 0.25)",
-                          padding: matches ? "0px" : "17px 32px",
-                          background: matches ? "none" : "#F1F9FF",
-                          fontFamily: "'Raleway', sans-serif",
-                          fontWeight: 600,
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Whatsapp />
-                        <Typography
+                    <Grid container justifyContent="center" alignItems="center">
+                      <Grid item>
+                        <Link
+                          href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
+                          target="_blank"
                           sx={{
                             textDecoration: "none",
-                            fontSize: matches ? "24px" : "18px",
-                            fontWeight: 400,
-                            fontFamily: "'Mulish', sans-serif",
-                            marginLeft: "12px",
                           }}
                         >
-                          0812-xxxx-xxxx
-                        </Typography>
-                      </Button>
-                    </Link>
-                  </Grid>
-                  <Grid item sx={{ marginTop: "40px" }}>
-                    <Link
-                      href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
-                      target="_blank"
-                      sx={{
-                        textDecoration: "none",
-                      }}
-                    >
-                      <Button
-                        sx={{
-                          textTransform: "none",
-                          color: "#25313C",
-                          borderRadius: matches ? "0px" : "60px",
-                          boxShadow: matches
-                            ? ""
-                            : "0px 6px 8px rgba(127, 55, 55, 0.25)",
-                          padding: matches ? "0px" : "17px 32px",
-                          background: "none",
-                          fontFamily: "'Raleway', sans-serif",
-                          fontWeight: 600,
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Whatsapp />
-                        <Typography
+                          <Button
+                            sx={{
+                              textTransform: "none",
+                              color: "#25313C",
+                              borderRadius: matches ? "0px" : "60px",
+                              boxShadow: matches
+                                ? ""
+                                : "0px 6px 8px rgba(127, 55, 55, 0.25)",
+                              width: "296px",
+                              height: "74px",
+                              background: matches ? "none" : "#F1F9FF",
+                              fontFamily: "'Raleway', sans-serif",
+                              fontWeight: 600,
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Whatsapp />
+                            <Typography
+                              sx={{
+                                textDecoration: "none",
+                                fontSize: matches ? "24px" : "18px",
+                                fontWeight: 400,
+                                fontFamily: "'Mulish', sans-serif",
+                                marginLeft: "12px",
+                              }}
+                            >
+                              0812-xxxx-xxxx
+                            </Typography>
+                          </Button>
+                        </Link>
+                      </Grid>
+                      <Grid item sx={{ marginTop: "40px" }}>
+                        <Link
+                          href="https://api.whatsapp.com/send?phone=628121250200&text=Halo%20gan%2C%20mau%20tanya-tanya%20nih"
+                          target="_blank"
                           sx={{
                             textDecoration: "none",
-                            fontSize: matches ? "24px" : "18px",
-                            fontWeight: 400,
-                            fontFamily: "'Mulish', sans-serif",
-                            marginLeft: "12px",
                           }}
                         >
-                          0812-xxxx-xxxx
-                        </Typography>
-                      </Button>
-                    </Link>
+                          <Button
+                            sx={{
+                              textTransform: "none",
+                              color: "#25313C",
+                              borderRadius: matches ? "0px" : "60px",
+                              boxShadow: matches
+                                ? ""
+                                : "0px 6px 8px rgba(127, 55, 55, 0.25)",
+                              width: "296px",
+                              height: "74px",
+                              background: "none",
+                              fontFamily: "'Raleway', sans-serif",
+                              fontWeight: 600,
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            <Whatsapp />
+                            <Typography
+                              sx={{
+                                textDecoration: "none",
+                                fontSize: matches ? "24px" : "18px",
+                                fontWeight: 400,
+                                fontFamily: "'Mulish', sans-serif",
+                                marginLeft: "12px",
+                              }}
+                            >
+                              0812-xxxx-xxxx
+                            </Typography>
+                          </Button>
+                        </Link>
+                      </Grid>
+                    </Grid>
                   </Grid>
                 </Grid>
               </Grid>
@@ -1039,7 +1059,7 @@ function App() {
                         fontSize: "32px",
                         fontWeight: 800,
                         fontFamily: "'Mulish', sans-serif",
-                        color: "#25313C"
+                        color: "#25313C",
                       }}
                     >
                       E-mail Address
@@ -1058,7 +1078,7 @@ function App() {
                         fontSize: "24px",
                         fontWeight: 400,
                         fontFamily: "'Mulish', sans-serif",
-                        color: "#25313C"
+                        color: "#25313C",
                       }}
                     >
                       clothbrew@gmail.com
@@ -1115,9 +1135,10 @@ function App() {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item sx={{ marginTop: "40px" }}>
+          <Grid item xs={12} sx={{ marginTop: "40px" }}>
             <img
               src={matches ? BaristaImage : BaristaMobile}
+              style={{ width: matches ? "" : "100%" }}
               alt="barista preparing coffee"
             />
           </Grid>
@@ -1276,7 +1297,7 @@ function App() {
                   <Link
                     sx={{
                       textDecoration: "none",
-                      color:"#25313C",
+                      color: "#25313C",
                       cursor: "pointer",
                       fontFamily: "'Mulish', sans-serif",
                     }}
