@@ -38,6 +38,7 @@ import { ReactComponent as Favorite } from "./assets/icons/Favorite.svg";
 import { ReactComponent as Recycling } from "./assets/icons/Recycling.svg";
 import RectangleBg from "./assets/images/RectangleBg.png";
 import BaristaImage from "./assets/images/BaristaImage.png";
+import BaristaMobile from "./assets/images/BaristaMobile.png";
 
 const services = [
   {
@@ -157,6 +158,7 @@ function App() {
             item
             container
             sx={{ marginTop: `${matches ? "60px" : "20px"}` }}
+            direction={matches ? "row" : "column"}
           >
             <Grid item>
               <Link href="#contact" sx={{ textDecoration: "none" }}>
@@ -239,7 +241,7 @@ function App() {
         >
           “True change cannot be made {!matches && <br />}if it is bound by
           laws, {!matches && <br />}limitations, and predictions.
-          <br /> Coffee is one of those tools {!matches && <br />}that can break
+          <br /> <span style={{ fontWeight: 700 }}>Caffeine</span> is one of those tools {!matches && <br />}that can break
           em.”
         </Typography>
       </div>
@@ -351,7 +353,13 @@ function App() {
           </div>
         </div>
       )}
-      <Grid container justifyContent="center" sx={{ marginTop: "60px" }}>
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        direction={matches ? "row" : "column"}
+        sx={{ marginTop: "60px" }}
+      >
         <Grid item>
           <Link sx={{ textDecoration: "none" }} href="#find">
             <Button
@@ -359,7 +367,7 @@ function App() {
                 textTransform: "none",
                 borderRadius: "60px",
                 border: "1px solid #000000",
-                color: "#000000",
+                color: "#25313C",
                 background: "#FFFFFF",
                 padding: "16px 36px",
                 fontFamily: "'Raleway', sans-serif",
@@ -390,7 +398,7 @@ function App() {
                 textTransform: "none",
                 borderRadius: "60px",
                 border: "1px solid rgba(0, 0, 0, 0.4)",
-                color: "#000000",
+                color: "#25313C",
                 background: "#FFFFFF",
                 padding: "11px 36px",
                 fontFamily: "'Raleway', sans-serif",
@@ -427,6 +435,7 @@ function App() {
                 fontSize: "56px",
                 fontWeight: 500,
                 fontFamily: "'Raleway', sans-serif",
+                color: "#25313C"
               }}
             >
               Catalogue
@@ -448,6 +457,7 @@ function App() {
                         fontWeight: selectedFilter === "" ? 700 : 400,
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
+                        color: "#25313C"
                       }}
                       onClick={() => setSelectedFilter("")}
                     >
@@ -462,6 +472,7 @@ function App() {
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
+                        color: "#25313C"
                       }}
                       onClick={() => setSelectedFilter("coffee")}
                     >
@@ -476,6 +487,7 @@ function App() {
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
+                        color: "#25313C"
                       }}
                       onClick={() => setSelectedFilter("shirt")}
                     >
@@ -490,6 +502,7 @@ function App() {
                         fontFamily: "'Raleway', sans-serif",
                         cursor: "pointer",
                         marginLeft: "45px",
+                        color: "#25313C"
                       }}
                       onClick={() => setSelectedFilter("machine")}
                     >
@@ -573,6 +586,7 @@ function App() {
                       cursor: "pointer",
                       display: "flex",
                       alignItems: "center",
+                      color: "#25313C"
                     }}
                     onClick={() => setFilterPrice(!filterPrice)}
                   >
@@ -665,7 +679,7 @@ function App() {
       >
         <Grid
           container
-          alignItems="center"
+          alignItems={matches ? "center" : "flex-start"}
           direction="column"
           sx={{ padding: "0px 32px" }}
         >
@@ -685,9 +699,9 @@ function App() {
               sx={{
                 fontWeight: 700,
                 fontFamily: "'Mulish', sans-serif",
-                fontSize: "48px",
+                fontSize: matches ? "48px" : "44px",
                 color: "#25313C",
-                textAlign: "center",
+                textAlign: matches ? "center" : "start",
                 lineHeight: "100%",
               }}
             >
@@ -702,7 +716,7 @@ function App() {
                 fontFamily: "'Raleway', sans-serif",
                 fontSize: "16px",
                 color: "#25313C",
-                textAlign: "center",
+                textAlign: matches ? "center" : "start",
               }}
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -853,7 +867,12 @@ function App() {
           position: "relative",
         }}
       >
-        <Grid container alignItems="center" direction="column">
+        <Grid
+          container
+          alignItems={matches ? "center" : "flex-start"}
+          direction="column"
+          sx={{ padding: "0px 32px" }}
+        >
           <Grid item>
             <Typography
               sx={{
@@ -872,7 +891,7 @@ function App() {
                 fontFamily: "'Mulish', sans-serif",
                 fontSize: "48px",
                 color: "#25313C",
-                textAlign: "center",
+                textAlign: matches ? "center" : "start",
                 lineHeight: "100%",
               }}
             >
@@ -887,7 +906,7 @@ function App() {
                 fontFamily: "'Raleway', sans-serif",
                 fontSize: "16px",
                 color: "#25313C",
-                textAlign: "center",
+                textAlign: matches ? "center" : "start",
               }}
             >
               If you are looking for an answer or a coffee enthusiast, please
@@ -899,11 +918,11 @@ function App() {
         <Grid
           container
           justifyContent="space-between"
-          sx={{ marginTop: "60px" }}
+          sx={{ marginTop: matches ? "60px" : "0px" }}
         >
           <Grid item>
             <Grid container direction="column">
-              <Grid item sx={{ padding: "40px 120px" }}>
+              <Grid item sx={{ padding: matches ? "40px 120px" : "40px 32px" }}>
                 <Grid container direction="column">
                   <Grid item>
                     <Typography
@@ -911,6 +930,7 @@ function App() {
                         fontSize: "32px",
                         fontWeight: 800,
                         fontFamily: "'Mulish', sans-serif",
+                        color: "#25313C"
                       }}
                     >
                       Phone Number
@@ -932,8 +952,13 @@ function App() {
                       <Button
                         sx={{
                           textTransform: "none",
-                          color: "#000000",
-                          background: "none",
+                          color: "#25313C",
+                          borderRadius: matches ? "0px" : "60px",
+                          boxShadow: matches
+                            ? ""
+                            : "0px 6px 8px rgba(127, 55, 55, 0.25)",
+                          padding: matches ? "0px" : "17px 32px",
+                          background: matches ? "none" : "#F1F9FF",
                           fontFamily: "'Raleway', sans-serif",
                           fontWeight: 600,
                           display: "flex",
@@ -945,7 +970,7 @@ function App() {
                         <Typography
                           sx={{
                             textDecoration: "none",
-                            fontSize: "24px",
+                            fontSize: matches ? "24px" : "18px",
                             fontWeight: 400,
                             fontFamily: "'Mulish', sans-serif",
                             marginLeft: "12px",
@@ -967,7 +992,12 @@ function App() {
                       <Button
                         sx={{
                           textTransform: "none",
-                          color: "#000000",
+                          color: "#25313C",
+                          borderRadius: matches ? "0px" : "60px",
+                          boxShadow: matches
+                            ? ""
+                            : "0px 6px 8px rgba(127, 55, 55, 0.25)",
+                          padding: matches ? "0px" : "17px 32px",
                           background: "none",
                           fontFamily: "'Raleway', sans-serif",
                           fontWeight: 600,
@@ -980,7 +1010,7 @@ function App() {
                         <Typography
                           sx={{
                             textDecoration: "none",
-                            fontSize: "24px",
+                            fontSize: matches ? "24px" : "18px",
                             fontWeight: 400,
                             fontFamily: "'Mulish', sans-serif",
                             marginLeft: "12px",
@@ -997,7 +1027,7 @@ function App() {
               <Grid
                 item
                 sx={{
-                  padding: "40px 120px",
+                  padding: matches ? "40px 120px" : "40px 32px",
                   background: "rgba(137, 92, 64, 0.05)",
                   boxShadow: "8px 6px 12px rgba(192, 40, 40, 0.08)",
                 }}
@@ -1009,6 +1039,7 @@ function App() {
                         fontSize: "32px",
                         fontWeight: 800,
                         fontFamily: "'Mulish', sans-serif",
+                        color: "#25313C"
                       }}
                     >
                       E-mail Address
@@ -1027,6 +1058,7 @@ function App() {
                         fontSize: "24px",
                         fontWeight: 400,
                         fontFamily: "'Mulish', sans-serif",
+                        color: "#25313C"
                       }}
                     >
                       clothbrew@gmail.com
@@ -1044,7 +1076,7 @@ function App() {
                         sx={{
                           textTransform: "none",
                           borderRadius: "16px",
-                          color: "#000000",
+                          color: "#25313C",
                           background: "#208DB0",
                           width: "205px",
                           height: "64px",
@@ -1053,6 +1085,7 @@ function App() {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
+                          boxShadow: "0px 6px 8px rgba(127, 55, 55, 0.25)",
                           "&:active": {
                             background: "#bbcede",
                           },
@@ -1083,7 +1116,10 @@ function App() {
             </Grid>
           </Grid>
           <Grid item sx={{ marginTop: "40px" }}>
-            <img src={BaristaImage} alt="barista preparing coffee" />
+            <img
+              src={matches ? BaristaImage : BaristaMobile}
+              alt="barista preparing coffee"
+            />
           </Grid>
         </Grid>
       </div>
@@ -1094,7 +1130,7 @@ function App() {
             padding: `${matches ? "0 120px" : "0 32px"}`,
             paddingTop: "56px",
             paddingBottom: "88px",
-            backgroundColor: "#DAE3EA",
+            backgroundColor: "#FFF8F1",
           }}
         >
           <Grid container>
@@ -1106,7 +1142,7 @@ function App() {
                   sx={{
                     fontSize: "16px",
                     fontWeight: 600,
-                    color: "#000000",
+                    color: "#25313C",
                     marginLeft: "10px",
                     letterSpacing: "0.1em",
                     fontFamiy: "'Mulish', sans-serif",
@@ -1119,7 +1155,7 @@ function App() {
               <Typography
                 sx={{
                   fontSize: "12px",
-                  color: "#000000",
+                  color: "#25313C",
                   fontFamily: "'Mulish', sans-serif",
                   marginTop: "12px",
                 }}
@@ -1131,7 +1167,7 @@ function App() {
               <Link
                 sx={{
                   textDecoration: "none",
-                  color: "#000000",
+                  color: "#25313C",
                   display: "flex",
                   alignItems: "center",
                   cursor: "pointer",
@@ -1147,7 +1183,7 @@ function App() {
               <Typography
                 sx={{
                   textDecoration: "none",
-                  color: "#000000",
+                  color: "#25313C",
                   display: "flex",
                   fontWeight: "600",
                   alignItems: "center",
@@ -1167,7 +1203,7 @@ function App() {
                   <Link
                     sx={{
                       textDecoration: "none",
-                      color: "#000000",
+                      color: "#25313C",
                       cursor: "pointer",
                       fontFamily: "'Mulish', sans-serif",
                     }}
@@ -1179,7 +1215,7 @@ function App() {
                   <Link
                     sx={{
                       textDecoration: "none",
-                      color: "#000000",
+                      color: "#25313C",
                       cursor: "pointer",
                       fontFamily: "'Mulish', sans-serif",
                       marginTop: "8px",
@@ -1192,7 +1228,7 @@ function App() {
                   <Link
                     sx={{
                       textDecoration: "none",
-                      color: "#000000",
+                      color: "#25313C",
                       cursor: "pointer",
                       fontFamily: "'Mulish', sans-serif",
                       marginTop: "8px",
@@ -1205,7 +1241,7 @@ function App() {
                   <Link
                     sx={{
                       textDecoration: "none",
-                      color: "#000000",
+                      color: "#25313C",
                       cursor: "pointer",
                       fontFamily: "'Mulish', sans-serif",
                       marginTop: "8px",
@@ -1220,7 +1256,7 @@ function App() {
               <Typography
                 sx={{
                   textDecoration: "none",
-                  color: "#000000",
+                  color: "#25313C",
                   display: "flex",
                   fontWeight: "600",
                   alignItems: "center",
@@ -1240,7 +1276,7 @@ function App() {
                   <Link
                     sx={{
                       textDecoration: "none",
-                      color: "#000000",
+                      color:"#25313C",
                       cursor: "pointer",
                       fontFamily: "'Mulish', sans-serif",
                     }}
@@ -1252,7 +1288,7 @@ function App() {
                   <Link
                     sx={{
                       textDecoration: "none",
-                      color: "#000000",
+                      color: "#25313C",
                       cursor: "pointer",
                       fontFamily: "'Mulish', sans-serif",
                       marginTop: "8px",
@@ -1269,7 +1305,7 @@ function App() {
             alignItems="center"
             justifyContent="flex-end"
             sx={{
-              borderTop: "2px solid #FFFFFF",
+              borderTop: "2px solid #25313C",
               paddingTop: "20px",
               marginTop: "40px",
             }}
@@ -1304,12 +1340,16 @@ function App() {
           </Grid>
         </div>
       )}
-      {/* {!matches && (
+      {!matches && (
         <div
           style={{
             padding: `${matches ? "0 120px" : "0 32px"}`,
             marginTop: "50px",
-            background: "#80452C",
+            background: "#222847",
+            height: "174px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <Grid container justifyContent="center" sx={{ padding: "20px 0" }}>
@@ -1351,7 +1391,7 @@ function App() {
                       fontFamiy: "'Mulish', sans-serif",
                     }}
                   >
-                    Privacy Policy
+                    0813-xxx-xxx-xx
                   </Typography>
                 </Grid>
                 <Grid item>
@@ -1377,7 +1417,7 @@ function App() {
             </Grid>
           </Grid>
         </div>
-      )} */}
+      )}
     </div>
   );
 }
