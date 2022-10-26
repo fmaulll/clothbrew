@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import ClothBrew from "../../assets/images/Logo.png";
+import LogoSmall from "../../assets/images/LogoSmall.png";
 import { ReactComponent as Heart } from "../../assets/icons/Heart.svg";
 import { ReactComponent as Search } from "../../assets/icons/Search.svg";
 import { ReactComponent as Cart } from "../../assets/icons/Cart.svg";
@@ -109,13 +110,14 @@ const NavigationBar = () => {
           style={{
             position: "absolute",
             top: 0,
-            padding: "22px 0",
+            padding: "30px 0 0 0",
             left: "-30px",
             background:
-              "linear-gradient(336.8deg, #EB5757 2.72%, #1A3541 100%)",
+              "linear-gradient(335.26deg, #614626 0.98%, #3D2D1A 24.7%, #130F0B 100%)",
             borderRadius: "0px 0px 16px 0px",
             display: "flex",
             justifyContent: "center",
+            flexDirection: "column",
             width: "168px",
           }}
         >
@@ -157,24 +159,9 @@ const NavigationBar = () => {
                 </Typography>
               </Link>
             </Grid>
-            <Grid xs={12} item sx={{ marginTop: "4px" }}>
-              <Link
-                sx={{ textDecoration: "none", cursor: "pointer" }}
-                // href="#catalogue"
-                onClick={() => setOpen(false)}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "'Mulish', sans-serif",
-                    fontWeight: 600,
-                    color: "#FFFFFF",
-                  }}
-                >
-                  Shop Cart
-                </Typography>
-              </Link>
-            </Grid>
-            <Grid xs={12} item sx={{ marginTop: "40px" }}>
+          </Grid>
+          <Grid container sx={{ paddingLeft: "32px", background: "#231B1B", paddingBottom: "22px", borderRadius: "0 0 16px 0", marginTop: "15px" }}>
+            <Grid xs={12} item sx={{ marginTop: "15px" }}>
               <Link
                 sx={{ textDecoration: "none", cursor: "pointer" }}
                 href="#contact"
@@ -187,7 +174,7 @@ const NavigationBar = () => {
                     color: "#FFFFFF",
                   }}
                 >
-                  Contact Us
+                  Value
                 </Typography>
               </Link>
             </Grid>
@@ -207,6 +194,9 @@ const NavigationBar = () => {
                   Find Us
                 </Typography>
               </Link>
+            </Grid>
+            <Grid xs={12} item sx={{ marginTop: "20px" }}>
+              <img src={LogoSmall} />
             </Grid>
           </Grid>
         </div>
