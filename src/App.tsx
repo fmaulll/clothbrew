@@ -13,7 +13,8 @@ import NavigationBar from "./components/NavigationBar";
 import BackgroundHero from "./assets/images/Background-Hero.png";
 import BgMobile from "./assets/images/BgMobile.png";
 import BackgroundBottomHero from "./assets/images/Hero-Bottom.png";
-import BottomHeroMobile from "./assets/images/Background-Hero-Bottom.png";
+// import BottomHeroMobile from "./assets/images/Background-Hero-Bottom.png";
+import BottomHeroMobile from "./assets/images/BottomHeroMobile2.png";
 import { ReactComponent as ArrowRight } from "./assets/icons/ArrowSmall.svg";
 import PostOne from "./assets/images/post1.png";
 import PostTwo from "./assets/images/post2.png";
@@ -98,7 +99,7 @@ function App() {
       <div
         style={{
           backgroundImage: `url(${matches ? BackgroundHero : BgMobile})`,
-          height: `${matches ? "100vh" : "100vh"}`,
+          height: `${matches ? "100vh" : "591px"}`,
           padding: `${matches ? "0 120px" : "0 32px"}`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center top",
